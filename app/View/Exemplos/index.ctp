@@ -1,5 +1,5 @@
 <!-- File: /app/View/Exemplos/teste.ctp -->
 
 <?php
-echo $exemplo;
+print_r( $exemplo);
 ?>
