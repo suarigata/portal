@@ -17,9 +17,15 @@ class Produto extends AppModel{
 	
 	//Categorias
 	public function listaCategorias($nome, $superCategoria = NULL){
-		$client = new SoapClient("localhost:8080/ProdUNICAMPServices/services/Servicos?wsdl");
-		$result = $client->GetListCategoria($nome, $superCategoria);
-		return $result;
+		$client = new SoapClient("http://localhost:8080/ProdUNICAMPServices/services/Servicos?wsdl");
+		$result = $client->getListCategoria();
+		$ret = array();
+		foreach ($result->return as $a){
+			if ($a->supercategoria == ""){
+				array_push($ret, $a->nome);
+			}
+		}
+		return $ret;
 	}
 	
 	// fabricantes
