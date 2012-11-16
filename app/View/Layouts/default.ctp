@@ -11,8 +11,6 @@
 		echo $this->fetch('script');
 	?>
 	
-<script type="text/javascript" language="javascript" src="js/addon.js"></script>
-<script type="text/javascript" language="javascript" src="js/custom.js"></script>
   </head>
   <body>
 
@@ -34,7 +32,7 @@
     if(1==1){
     ?>
             <div class="lr login">
-<div class="ls texto"> <?php echo $this->Form->create('Login'); ?> </div>
+<div class="ls texto"> <?php echo $this->Form->create('Autenticacaos'); ?> </div>
 <div class="ls texto"> <?php echo $this->Form->input('login'); ?> </div>
 <div class="ls texto"> <?php echo $this->Form->input('password'); ?> </div>
 <div class="ls botao"> <?php echo $this->Form->end('Login'); ?> </div>
@@ -54,74 +52,30 @@
       <?php echo $this->Session->flash(); ?>
 		<?php echo $this->fetch('content'); ?>
       
-        <div id="banner" class="slideshowContainer"> 
-          <!-- put your slideshow images here -->  
-          <div class="slideshow"> 
-            <a href="http://www.flickr.com/photos/12836528@N00/1161507336" title="Facade" target="_blank" shape="rect"> 
-              <img src="http://lh6.ggpht.com/_d6vKxl1jKWk/S9XzN29FXdI/AAAAAAABDAg/3lYLjJQdX8E/facade.jpg" /> 
-            </a>  
-            <a href="http://www.flickr.com/photos/28481088@N00/2495495981" title="Twisted building" target="_blank" shape="rect"> 
-              <img src="http://lh6.ggpht.com/_d6vKxl1jKWk/S9XzOZurSSI/AAAAAAABDAk/9RRnvdbw8d0/twisted.jpg" /> 
-            </a>  
-            <a href="http://www.flickr.com/photos/51035555243@N01/43213643" title="Working late" target="_blank" shape="rect"> 
-              <img src="http://lh4.ggpht.com/_d6vKxl1jKWk/S9X8hUDF9qI/AAAAAAABDBI/nUypLbC1y8w/workinglate.jpg" /> 
-            </a> 
-          </div>  
-          <div class="slideshowLeftCorner"></div>  
-          <div class="slideshowRightCorner"></div>  
-          <div class="slideshowBottom"></div> 
-        </div>  
-        <!--  content -->  
+        
         <div id="content"> 
           <div style="margin-top:20px;">
-            <div class="one_fourth"> 
-              <div class="bloc rounded"> 
-                <h3>Jquery on board</h3>  
-                <p> 
-                  <img src="images/chart_bar.png" style="float:right;margin:0 0 0 8px" /> Lorem ipsum dolor sit amet, turpis egestas commodo, eget non ultrices nec lectus, ac interdum, netus aliquam.
-                </p> 
-              </div> 
-            </div>  
-            <div class="one_fourth"> 
-              <div class="bloc rounded"> 
-                <h3>Slideshow</h3>  
-                <p> 
-                  <img src="images/folder.png" style="float:right;margin:0 0 0 8px" /> Lorem ipsum dolor sit amet, turpis egestas commodo, eget non ultrices nec lectus, ac interdum, netus aliquam.
-                </p> 
-              </div> 
-            </div>  
-            <div class="one_fourth"> 
-              <div class="bloc rounded"> 
-                <h3>Cufon fonts</h3>  
-                <p> 
-                  <img src="images/link.png" style="float:right;margin:0 0 0 8px" /> Lorem ipsum dolor sit amet, turpis egestas commodo, eget non ultrices nec lectus, ac interdum, netus aliquam.
-                </p> 
-              </div> 
-            </div>  
+            
             <div class="one_fourth last"> 
               <div class="bloc rounded"> 
-                <h3>Tableless</h3>  
+                <h3>Produto</h3>  
                 <p> 
-                  <img src="images/rss2.png" style="float:right;margin:0 0 0 8px" /> Lorem ipsum dolor sit amet, turpis egestas commodo, eget non ultrices nec lectus, ac interdum, netus aliquam.
+                  <img src="images/rss2.png" style="float:right;margin:0 0 0 8px" />Podemos usar essas caixinhas pra os produtos.
                 </p> 
               </div> 
-            </div>  
+            </div>
+              
             <div class="clear"></div>  
-            <div> 
-              <h1>Heading sample with Cufon font</h1>  
-              <p>This template is free. You are free to use it, share it, redistribute it, modify it in any way you want as long as you 
-                <strong>keep a link back to doTemplate Website</strong> in the footer. You can remove this link by making a $10 
-                <a href="http://www.dotemplate.com/dt/index.jsp#donate" target="_blank" shape="rect">donation</a>.
-              </p> 
-            </div>  
+              
             <div class="half"> 
-              <h3>Heading 3 sample</h3>  
+              <h3>Meia pagina</h3>  
               <p>Lorem ipsum dolor sit amet, turpis egestas commodo, eget non ultrices nec lectus, ac interdum, netus aliquam, vulputate vel reiciendis risus.</p> 
             </div>  
             <div class="half last"> 
-              <h3>Lightweight XHTML / CSS template</h3>  
+              <h3>Meia pagina</h3>  
               <p>Lorem ipsum dolor sit amet, turpis egestas commodo, eget non ultrices nec lectus, ac interdum, netus aliquam.</p> 
-            </div> 
+            </div>
+            
           </div>  
           <div class="clear"></div> 
         </div>  

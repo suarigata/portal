@@ -6,4 +6,8 @@ class AutenticacaosController extends AppController{
 		$this->set('desloga', $this->Autenticacao->desLogin("39715732828"));
 		$this->set('loga', $this->Autenticacao->fazLogin('39715732828', 'sindos'));
 	}
+	
+	public function add(){
+		
+	}
 }
