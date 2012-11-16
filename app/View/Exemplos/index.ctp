@@ -2,5 +2,4 @@
 
 <?php
 print_r( $exemplo);
-print_r( $listaCat);
 ?>
