@@ -29,10 +29,10 @@
         </li>
       </ul>
     <?php
-    if(1==1){
+    if(CakeSession::read('login')!='1'){
     ?>
             <div class="lr login">
-<div class="ls texto"> <?php echo $this->Form->create('Autenticacaos'); ?> </div>
+<div class="ls texto"> <form action="/portal/autenticacaos/add" method="post"> </div>
 <div class="ls texto"> <?php echo $this->Form->input('login'); ?> </div>
 <div class="ls texto"> <?php echo $this->Form->input('password'); ?> </div>
 <div class="ls botao"> <?php echo $this->Form->end('Login'); ?> </div>
@@ -40,7 +40,7 @@
 		<?php
 		}
 		else
-			echo "<div class=\"lr login\">logado</div>";
+			echo "<div class=\"lr login\">".CakeSession::read('nome')."</div>";
 		?>
 		
     </div>
