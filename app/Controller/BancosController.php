@@ -7,3 +7,4 @@ class BancosController extends AppController{
 		$this->set('cancelar', $this->Banco->cancelarBoleto(1));
 	}
 }
+?>

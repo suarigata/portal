@@ -5,3 +5,4 @@ class ValidacaoCreditosController extends AppController{
 		$this->set('validar', $this->ValidacaoCredito->validarCredito("39715732828"));
 	}
 }
+?>
