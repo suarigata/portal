@@ -9,7 +9,41 @@ TO REMOVE THE LINK, PLEASE MAKE A 10 DOLLARS DONATION at www.dotemplate.com/#don
 
 ----------------------------------------------------------------------------------------
 */
+div.ls{
+	float:left;
+}
+div.lr{
+	float:right;
+}
 
+.login{
+	height:30px;
+}
+
+.texto input{
+	margin: 7px 7px 7px 7px;
+	height:15px;
+	width:110px;
+	background: gray;
+	color:white;
+	border:0px
+}
+
+.botao input{
+	margin: 7px 7px 7px 7px;
+	background: gray;
+	color:white;
+	border:0px
+}
+
+#dentronav{
+	width:1000px;
+	display:table;
+	margin:0 auto;
+	padding:0;
+	position:relative;
+	height:30px;
+}
 
 html {
 	background: $bottomWrapper.bg.color;
@@ -89,6 +123,7 @@ body {
 	text-transform:uppercase;
 	font-size:12px;
 	font-family:Arial,sans-serif;
+	float:left
 }
 
 
@@ -122,7 +157,7 @@ body {
 	
 
 #topnav ul {
-	width:1000px;
+	
 }
 
 

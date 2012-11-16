@@ -15,32 +15,38 @@
 <script type="text/javascript" language="javascript" src="js/custom.js"></script>
   </head>
   <body>
-   
-		
-		
+
     <!-- top wrapper -->  
     <div id="topWrapper"> 
       <div id="topBanner"></div> 
     </div>  
-    <div id="topnav"> 
+    <div id="topnav">
+    <div id="dentronav">
       <ul>
         <li id="current" style="border:none">
           <a href="#" shape="rect">Home</a>
         </li>
         <li>
-          <a href="#" shape="rect">Products</a>
+          <a href="#" shape="rect">Carrinho</a>
         </li>
-        <li>
-          <a href="#" shape="rect">Services</a>
-        </li>
-        <li>
-          <a href="#" shape="rect">News</a>
-        </li>
-        <li>
-          <a href="#" shape="rect">About</a>
-        </li>
-      </ul> 
-    </div>  
+      </ul>
+    <?php
+    if(1==1){
+    ?>
+            <div class="lr login">
+<div class="ls texto"> <?php echo $this->Form->create('Login'); ?> </div>
+<div class="ls texto"> <?php echo $this->Form->input('login'); ?> </div>
+<div class="ls texto"> <?php echo $this->Form->input('password'); ?> </div>
+<div class="ls botao"> <?php echo $this->Form->end('Login'); ?> </div>
+		</div>
+		<?php
+		}
+		else
+			echo "<div class=\"lr login\">logado</div>";
+		?>
+		
+    </div>
+    </div>
     <!-- end top wrapper -->  
     <div id="wrapper"> 
       <div id="container">

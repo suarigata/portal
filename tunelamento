@@ -1,2 +1,2 @@
 #!/bin/bash
-ssh -L 8080:staff01.lab.ic.unicamp.br:8080 -L 8480:staff01.lab.ic.unicamp.br:8480 -L 8000:staff01.lab.ic.unicamp.br:80 -L 8888:staff03.lab.ic.unicamp.br:8888 ra$1@ssh2.students.ic.unicamp.br
+ssh -D 6000 -L 8080:staff01.lab.ic.unicamp.br:8080 -L 8480:staff01.lab.ic.unicamp.br:8480 -L 8000:staff01.lab.ic.unicamp.br:80 -L 8888:staff03.lab.ic.unicamp.br:8888 ra$1@ssh2.students.ic.unicamp.br
