@@ -29,7 +29,8 @@
         </li>
       </ul>
     <?php
-    if(CakeSession::read('login')!='1'){
+    echo CakeSession::read('cliente');
+    if(CakeSession::read('cliente')==''){
     ?>
             <div class="lr login">
 <div class="ls texto"> <form action="/portal/autenticacaos/add" method="post"> </div>
@@ -40,7 +41,7 @@
 		<?php
 		}
 		else
-			echo "<div class=\"lr login\">".CakeSession::read('nome')."</div>";
+			echo "<div class=\"lr login texto\">".CakeSession::read('cliente')."</div>";
 		?>
 		
     </div>
