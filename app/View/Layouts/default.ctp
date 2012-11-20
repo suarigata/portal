@@ -10,7 +10,6 @@
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-	
   </head>
   <body>
 
@@ -22,7 +21,9 @@
     <div id="dentronav">
       <ul>
         <li id="current" style="border:none">
-          <a href="#" shape="rect">Home</a>
+			<?php
+				echo $this->Html->link('HOME', array('controller' => 'homes', 'action' => 'index'));
+			?>
         </li>
         <li>
           <a href="#" shape="rect">Carrinho</a>
@@ -50,20 +51,31 @@
     <div id="wrapper"> 
       <div id="container">
       
-      <?php echo $this->Session->flash(); ?>
-		<?php echo $this->fetch('content'); ?>
-      	<?php
-      		foreach($list->return as $value) {
-      			if ($value->supercategoria == "")
-      				echo $value->nome. "<br>";
-      			else
-	      			echo $this->Html->link($value->nome, array('controller' => 'produtos', 'action' => 'buscaPorCategoria', $value->nome)). "<br>";
-      		}
-      	?>
+      	<div id="menu" style="float: left; width: 20%">
+      		<h4>CATEGORIAS</h4>
+	      	<?php
+	      		foreach($list->return as $value) {
+	      			if ($value->supercategoria == ""){
+	      				echo $value->nome. "<br>";
+						foreach($list->return as $value2) {
+							if ($value->nome == $value2->supercategoria){
+				      			echo $this->Html->link(' - '.$value2->nome, array('controller' => 'produtos', 'action' => 'produtosListPorCategoria', $value2->nome)). '<br>';
+							}
+						}		
+					}
+	      		}
+	      	?>
+      	</div>
+      	
+      	<div id="main" style="float: left; width: 80%;">
+			<?php echo $this->Session->flash(); ?>
+			<?php echo $this->fetch('content'); ?>
+      	</div>
         
         <div id="content"> 
           <div style="margin-top:20px;">
             
+            <!--
             <div class="one_fourth last"> 
               <div class="bloc rounded"> 
                 <h3>Produto</h3>  
@@ -72,7 +84,8 @@
                 </p> 
               </div> 
             </div>
-              
+             -->
+
             <div class="clear"></div>  
               
             <div class="half"> 
