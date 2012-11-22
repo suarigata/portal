@@ -36,5 +36,7 @@ class AppController extends Controller {
 		parent::beforeFilter();
 		$cliente=CakeSession::read('cliente');
 		$this->set('username',$cliente['nome']);
+		$this->loadModel('Produto');
+		$this->set('list', $this->Produto->listaCategorias());
 	}
 }

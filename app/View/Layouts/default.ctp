@@ -52,7 +52,11 @@
       
       <?php echo $this->Session->flash(); ?>
 		<?php echo $this->fetch('content'); ?>
-      
+      	<?php
+      		foreach($list->return as $value) {
+      			echo $value->nome. "<br>";
+      		}
+      	?>
         
         <div id="content"> 
           <div style="margin-top:20px;">
