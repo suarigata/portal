@@ -54,7 +54,10 @@
 		<?php echo $this->fetch('content'); ?>
       	<?php
       		foreach($list->return as $value) {
-      			echo $this->Html->link($value->nome, array('controller' => 'produtos', 'action' => 'buscaPorCategoria', $value->nome)). "<br>";
+      			if ($value->supercategoria == "")
+      				echo $value->nome. "<br>";
+      			else
+	      			echo $this->Html->link($value->nome, array('controller' => 'produtos', 'action' => 'buscaPorCategoria', $value->nome)). "<br>";
       		}
       	?>
         
