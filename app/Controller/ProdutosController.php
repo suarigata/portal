@@ -16,6 +16,5 @@ class ProdutosController extends AppController{
 	public function produtoPorCodigo($codigo){
 		$this->set('produto', $this->Produto->buscaCodigo($codigo));
 	}
-	
 }
 ?>

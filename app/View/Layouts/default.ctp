@@ -12,7 +12,6 @@
 	?>
   </head>
   <body>
-
     <!-- top wrapper -->  
     <div id="topWrapper"> 
       <div id="topBanner"></div> 

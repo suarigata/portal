@@ -1,3 +1,4 @@
+
 <?php
 	echo '<h1>' . $nome . '</h1>';
 	foreach($produtos as $chave => $produto) {

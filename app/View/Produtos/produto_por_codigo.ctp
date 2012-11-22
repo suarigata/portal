@@ -1,3 +1,4 @@
+
 <?php
 	foreach($produto as $chave => $prod) {
 		echo '<div class="image" style="float:left; margin: 10px;">
