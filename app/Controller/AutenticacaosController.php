@@ -23,7 +23,7 @@ class AutenticacaosController extends AppController{
 		
 		if($login==0){
 			$this->loadModel('Cliente');
-			// $login=$this->Cliente->clientData("84585258523"); // $this->request->data('login')); TODO fazer isso funfar 
+			$login=$this->Cliente->clientData($this->request->data('login')); 
 			CakeSession::write('cliente',$login);
 		}
 		
@@ -38,9 +38,10 @@ class AutenticacaosController extends AppController{
 				5 => "Usu&aacute;rio n&atilde;o est&aacute; logado.",
 				10 => "Erro desconhecido.");
 		
-		$this->Session->setFlash($flash[abs($login)]);
+		$cliente=CakeSession::read('cliente');
+		$login=$this->Autenticacao->desLogin($cliente['cpf']);
 		
-		//$login=$this->Autenticacao->desLogin(CakeSession::read('cliente')); TODO pegar cpf aqui
+		$this->Session->setFlash($flash[abs($login)]);
 		
 		CakeSession::delete('cliente');
 		

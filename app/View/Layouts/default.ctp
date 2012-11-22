@@ -29,7 +29,7 @@
         </li>
       </ul>
     <?php
-    echo CakeSession::read('cliente');
+    
     if(CakeSession::read('cliente')==''){
     ?>
             <div class="lr login">
@@ -41,7 +41,7 @@
 		<?php
 		}
 		else
-			echo "<div class=\"lr login texto\">".CakeSession::read('cliente')."</div>";
+			echo "<div class=\"lr login texto\">$username ". $this->Html->link('Sair', array('controller' => 'autenticacaos', 'action' => 'del'))."</div>";
 		?>
 		
     </div>
