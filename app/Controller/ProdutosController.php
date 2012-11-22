@@ -7,5 +7,9 @@ class ProdutosController extends AppController{
 		//$this->set('listaCat', $this->Produto->listaCategorias());
 		//$this->set('listaFab', $this->Produto->listaFabricantes());
 	}
+	
+	public function buscaPorCategoria($categoria){
+		$this->set('nome', $categoria);
+	}
 }
 ?>

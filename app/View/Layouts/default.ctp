@@ -54,7 +54,7 @@
 		<?php echo $this->fetch('content'); ?>
       	<?php
       		foreach($list->return as $value) {
-      			echo $value->nome. "<br>";
+      			echo $this->Html->link($value->nome, array('controller' => 'produtos', 'action' => 'buscaPorCategoria', $value->nome)). "<br>";
       		}
       	?>
         
