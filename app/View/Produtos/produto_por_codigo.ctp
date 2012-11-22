@@ -11,4 +11,10 @@
 		echo '<b>ALTURA:</b> ' . $prod['altura'] . '<br>';
 		echo '<b>LARGURA:</b> ' . $prod['largura'] . '<br>';
 	}
+	
+	echo $this->Html->link(
+		$this->Form->button('Comprar', array('type'=>'submit')),
+	  	array('controller' => 'carrinho', 'action' => 'addCarrinho', $prod['codigo']),
+	  	array('escape' => false));
+
 ?>

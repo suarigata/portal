@@ -25,7 +25,9 @@
 			?>
         </li>
         <li>
-          <a href="#" shape="rect">Carrinho</a>
+			<?php
+				echo $this->Html->link('CARRINHO', array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
+			?>
         </li>
       </ul>
     <?php
