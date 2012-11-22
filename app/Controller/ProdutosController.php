@@ -9,7 +9,8 @@ class ProdutosController extends AppController{
 	}
 	
 	public function buscaPorCategoria($categoria){
-		$this->set('nome', $categoria);
+		$this->set('listaProd', $this->Produto->buscaFiltro('',$categoria,'','',''));
+		//$this->set('nome', $categoria);
 	}
 }
 ?>
