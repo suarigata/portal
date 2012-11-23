@@ -41,7 +41,7 @@ class Cartao extends AppModel{
 	public function consultarBandeiras(){
 		$client = new SoapClient("http://www.chainreactor.net/services/nusoap/WebServer.php?wsdl");
 		$result = $client->getPaymentBrands("10");
-		return $result;
+		return json_decode($result, true);
 	}
 	
 	public function consultarStatus(){

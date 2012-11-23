@@ -3,6 +3,12 @@ class CarrinhoController extends AppController{
 	
 	public function index(){
 	}
+	
+	public function totalPrice(){//calcula o preço total das compras
+		//$cods = CakeSession::read('carrinho');
+		//$produtos = CakeSession::read('produtos');
+		
+	}
 
 	public function listCarrinho(){
 		$cods = CakeSession::read('carrinho');

@@ -6,5 +6,9 @@ class BancosController extends AppController{
 		//$this->set('obter', $this->Banco->recuperarBoleto('207'));
 		//$this->set('cancelar', $this->Banco->cancelarBoleto("207"));
 	}
+	
+	public function geraBoleto(){
+		//$this->set('emitir', $this->Banco->emitirBoleto('Thiago', '10.0'));
+	}
 }
 ?>
