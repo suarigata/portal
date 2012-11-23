@@ -6,6 +6,11 @@
 		$this->Form->button('Limpar Carrinho', array('type'=>'submit', 'style' => 'float: right; margin-left: 600px;')),
 	  	array('controller' => 'carrinho', 'action' => 'limpaCarrinho'),
 	  	array('escape' => false));
+	  	
+	 echo $this->Html->link(
+		$this->Form->button('Finalizar Compra', array('type'=>'submit', 'style' => 'float: right; margin-left: 600px;')),
+	  	array('controller' => 'validacaoCreditos', 'action' => 'selecionaMetodo'),
+	  	array('escape' => false));
 
 	foreach($cods as $chave => $qtd) {
 		$produto = $produtos[$chave];
@@ -23,5 +28,5 @@
 			echo '</div>';
 		}
 	}
-
+	echo 'PRECOTOTAL '.$total.'<br>';
 ?>

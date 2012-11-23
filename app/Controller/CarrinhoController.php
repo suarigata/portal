@@ -5,16 +5,36 @@ class CarrinhoController extends AppController{
 	}
 	
 	public function totalPrice(){//calcula o preço total das compras
-		//$cods = CakeSession::read('carrinho');
-		//$produtos = CakeSession::read('produtos');
+		$cods = CakeSession::read('carrinho');
+		$produtos = CakeSession::read('produtos');
 		
+		$total = 0.0;
+		$this->loadModel('Estoque');
+		foreach($cods as $chave => $qtd) {
+			$x = $this->Estoque->currentPrice($chave);
+			$x = $x['product'];
+			$x = $x['price'];
+			$total = $total + $x;
+		}
+		return total;
 	}
 
 	public function listCarrinho(){
 		$cods = CakeSession::read('carrinho');
 		$produtos = CakeSession::read('produtos');
+		
+		$total = 0.0;
+		$this->loadModel('Estoque');
+		foreach($cods as $chave => $qtd) {
+			$x = $this->Estoque->currentPrice($chave);
+			$x = $x['product'];
+			$x = $x['price'];
+			$total = $total + ($x*$qtd);
+		}
+		CakeSession::write('valorDaCompra',$total);
 		$this->set("cods",$cods);
 		$this->set("produtos",$produtos);
+		$this->set("total", $total);
 	}
 
 	public function addCarrinho($codigo){

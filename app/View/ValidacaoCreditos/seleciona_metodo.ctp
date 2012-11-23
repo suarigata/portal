@@ -5,6 +5,6 @@
 		if($tipo != 'Boleto')
 			echo $this->Html->link($tipo, array('controller' => 'cartaos', 'action' => '???')).'<br>';
 		else
-			echo $this->Html->link($tipo, array('controller' => 'bancos', 'action' => 'geraBoleto')).'<br>';
+			echo $this->Html->link($tipo, array('controller' => 'bancos', 'action' => 'gerarBoleto')).'<br>';
 	}
 ?>
