@@ -15,66 +15,61 @@
     <!-- top wrapper -->  
     <div id="topWrapper"> 
       <div id="topBanner"></div> 
-    </div>  
+    </div>
     <div id="topnav">
-    <div id="dentronav">
+     <div id="dentronav">
       <ul>
         <li id="current" style="border:none">
-			<?php
-				echo $this->Html->link('HOME', array('controller' => 'Homes', 'action' => 'index'));
-			?>
+			<?php echo $this->Html->link('HOME', array('controller' => 'homes', 'action' => 'index')); ?>
         </li>
         <li>
-			<?php
-				echo $this->Html->link('CARRINHO', array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
-			?>
+			<?php echo $this->Html->link('CARRINHO', array('controller' => 'Carrinho', 'action' => 'listCarrinho')); ?>
         </li>
       </ul>
-    <?php
-    
-    if(CakeSession::read('cliente')==''){
-    ?>
-            <div class="lr login">
-<div class="ls texto"> <form action="/portal/autenticacaos/add" method="post"> </div>
-<div class="ls texto"> <?php echo $this->Form->input('login'); ?> </div>
-<div class="ls texto"> <?php echo $this->Form->input('password'); ?> </div>
-<div class="ls botao"> <?php echo $this->Form->end('Login'); ?> </div>
-		</div>
-		<?php
-		}
+      
+      <?php
+		if(CakeSession::read('cliente')==''){
+	  ?>
+			<div class="lr login">
+				<div class="ls texto"> <form action="/portal/autenticacaos/add" method="post"> </div>
+				<div class="ls texto"> <?php echo $this->Form->input('login'); ?> </div>
+				<div class="ls texto"> <?php echo $this->Form->input('password'); ?> </div>
+				<div class="ls botao"> <?php echo $this->Form->end('Login'); ?> </div>
+			</div>
+	  <?php
+	  	}
 		else
 			echo "<div class=\"lr login texto\">$username ". $this->Html->link('Sair', array('controller' => 'autenticacaos', 'action' => 'del'))."</div>";
-		?>
+	  ?>
 		
+     </div>
     </div>
-    </div>
-    <!-- end top wrapper -->  
+    <!-- end top wrapper -->
+    
     <div id="wrapper"> 
       <div id="container">
       
-      	<div id="menu" style="float: left; width: 20%">
+      	<div id="menu">
       		<h4>CATEGORIAS</h4>
 	      	<?php
 	      		foreach($list->return as $value) {
 	      			if ($value->supercategoria == ""){
-	      				echo $value->nome. "<br>";
+	      				echo "<div class=\"supercategoria\">". $value->nome. "</div>";
 						foreach($list->return as $value2) {
 							if ($value->nome == $value2->supercategoria){
-				      			echo $this->Html->link(' - '.$value2->nome, array('controller' => 'produtos', 'action' => 'produtosListPorCategoria', $value2->nome)). '<br>';
+				      			echo $this->Html->link($value2->nome, array('controller' => 'produtos', 'action' => 'produtosListPorCategoria', $value2->nome)). '<br>';
 							}
 						}		
 					}
 	      		}
 	      	?>
       	</div>
-      	
-      	<div id="main" style="float: left; width: 80%;">
-			<?php echo $this->Session->flash(); ?>
-			<?php echo $this->fetch('content'); ?>
-      	</div>
         
         <div id="content"> 
           <div style="margin-top:20px;">
+            
+            <?php echo $this->Session->flash(); ?>
+			<?php echo $this->fetch('content'); ?>
             
             <!--
             <div class="one_fourth last"> 
@@ -85,10 +80,9 @@
                 </p> 
               </div> 
             </div>
-             -->
 
-            <div class="clear"></div>  
-              
+            <div class="clear"></div>
+            
             <div class="half"> 
               <h3>Meia pagina</h3>  
               <p>Lorem ipsum dolor sit amet, turpis egestas commodo, eget non ultrices nec lectus, ac interdum, netus aliquam, vulputate vel reiciendis risus.</p> 
@@ -97,6 +91,7 @@
               <h3>Meia pagina</h3>  
               <p>Lorem ipsum dolor sit amet, turpis egestas commodo, eget non ultrices nec lectus, ac interdum, netus aliquam.</p> 
             </div>
+            -->
             
           </div>  
           <div class="clear"></div> 
