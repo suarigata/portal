@@ -1,13 +1,12 @@
 <?php
 class AutenticacaosController extends AppController{
 	
-	public function index(){//o desloga nm retorna -5 nunca
-		$this->set('desloga', $this->Autenticacao->desLogin("39715732828"));
+	public function index(){
 		$this->set('desloga', $this->Autenticacao->desLogin("39715732828"));
 		$this->set('loga', $this->Autenticacao->fazLogin('39715732828', 'sindos'));
 	}
 	
-	public function add(){ // TODO Fazer o login aqui
+	public function add(){
 		
 		$login=$this->Autenticacao->fazLogin($this->request->data('login'),$this->request->data('password'));
 		
