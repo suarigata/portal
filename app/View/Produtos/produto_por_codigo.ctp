@@ -1,14 +1,14 @@
 <?php
-	$produto = $produto['return'];
 	if (!array_key_exists('faultcode', $produto)){
+		$produto = $produto['return'];
 		foreach($produto as $chave => $prod) {
 			echo '<div class="image" style="float:left; margin: 10px;">
-					<img src="' . $prod['imagem'] . '" width=200 height=200 alt="' . $prod['nome'] . '"/>
+					<img src="' . $prod['imagem'] . '" width=200 height=200 alt="' . utf8_encode($prod['nome']) . '"/>
 				  </div>';
-			echo '<b>PRODUTO:</b> ' . $prod['nome'] . '<br>';
+			echo '<b>PRODUTO:</b> ' . utf8_encode($prod['nome']) . '<br>';
 			echo '<b>PREÇO:</b> R$ ' . money_format('%.2n', $preco[$prod['codigo']]) . '<br>';
-			echo '<b>FABRICANTE:</b> ' . $prod['fabricante'] . '<br>';
-			echo '<b>DESCRICAO:</b> ' . $prod['descricao'] . '<br>';
+			echo '<b>FABRICANTE:</b> ' . utf8_encode($prod['fabricante']) . '<br>';
+			echo '<b>DESCRICAO:</b> ' . utf8_encode($prod['descricao']) . '<br>';
 			echo '<b>CÓDIGO:</b> ' . $prod['codigo'] . '<br>';
 			echo '<b>ALTURA:</b> ' . $prod['altura'] . '<br>';
 			echo '<b>LARGURA:</b> ' . $prod['largura'] . '<br>';

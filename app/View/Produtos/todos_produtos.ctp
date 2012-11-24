@@ -1,5 +1,5 @@
 <?php
-	echo '<h1>' . $nome . '</h1>';
+	print_r($result);
 	if (!array_key_exists('faultcode', $produtos)){
 		$produtos = $produtos['return'];
 		foreach($produtos as $chave2 => $produto) {

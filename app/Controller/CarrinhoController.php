@@ -49,10 +49,12 @@ class CarrinhoController extends AppController{
 		$precos = $ret['precos'];
 		$produtos = $ret['produtos'];
 		$new = true;
-		foreach ($cods as $chave => $value){
-			if ($chave == $codigo){
-				$cods[$chave]++;
-				$new = false;
+		if (!empty($cods)){
+			foreach ($cods as $chave => $value){
+				if ($chave == $codigo){
+					$cods[$chave]++;
+					$new = false;
+				}
 			}
 		}
 		if ($new == true){
@@ -60,9 +62,11 @@ class CarrinhoController extends AppController{
 			$produtos[$codigo] = $this->Produto->buscaCodigo($codigo);
 			$produtoEstoque = $this->Estoque->currentPrice($codigo);
 			$precos[$codigo] = $produtoEstoque['product']['price'];
+			$produtoEstoque = $this->Estoque->currentQuantity($codigo);
 			$qtds[$codigo] = $produtoEstoque['product']['quantity'];
 		}		
 		$this->colocaNaSessao($cods, $produtos, $precos, $qtds);
+		$this->redirect(array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
 	}
 
 	public function removerItem($codigo){
@@ -78,7 +82,8 @@ class CarrinhoController extends AppController{
 		unset($produtos[$codigo]);
 		
 		$this->colocaNaSessao($cods, $produtos, $precos, $qtds);
-	}
+		$this->redirect(array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
+		}
 
 	public function pegaDaSessao(){
 		$cods = CakeSession::read('carrinho');
@@ -101,7 +106,6 @@ class CarrinhoController extends AppController{
 		$this->set("precos",$precos);
 		$this->set("qtds",$qtds);
 		$this->set("produtos",$produtos);
-		$this->redirect(array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
 	}
 
 	public function limpaCarrinho(){

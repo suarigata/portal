@@ -22,6 +22,7 @@ class Produto extends AppModel{
 		//$client = new SoapClient("http://localhost:8080/ProdUNICAMPServices/services/Servicos?wsdl");
 		$result = $client->call("getListProdutoByFilter", array("nome" => $nome, "categoria" => $categoria, "fabricante" => $fabricante, "pesoMin" => $pesoMin, "pesoMax" =>$pesoMax));
 		//$result = $client->getListProdutoByFilter($nome, $categoria, $fabricante, $pesoMin, $pesoMax);
+		$this->set('result', $result);
 		$first = $result['return'];
 		if (!array_key_exists('0', $first)){
 			$aux['0'] = $first;

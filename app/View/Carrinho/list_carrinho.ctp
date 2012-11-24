@@ -21,13 +21,13 @@
 			$produto = $produtos[$chave]['return'][0];
 			echo '<div class="produto" style="float:left; margin: 10px; width: 100px;">';
 			echo $this->Html->link(
-				$this->Html->image($produto['imagem'], array('width' => '100', 'height' => '100', 'alt' => $produto['nome'])),
+				$this->Html->image($produto['imagem'], array('width' => '100', 'height' => '100', 'alt' => utf8_encode($produto['nome']))),
 								  	array('controller' => 'produtos', 'action' => 'produtoPorCodigo', $produto['codigo']),
 								  	array('escape' => false));
 			echo '</div>';
 			
 			echo '<div class="infos" style="float:left; margin: 10px; width: 550px; height: 100px;">';
-				echo $this->Html->link($produto['nome'], array('controller' => 'produtos', 'action' => 'produtoPorCodigo', $produto['codigo']));
+				echo $this->Html->link(utf8_encode($produto['nome']), array('controller' => 'produtos', 'action' => 'produtoPorCodigo', $produto['codigo']));
 				echo '<br>Quantidade: ' . $this->Form->text('qtd', array('value' => $qtd, 'style' => 'width: 40px'));
 				echo '<br>Preço unitário: ' . money_format('%.2n', doubleval($precos[$chave]));
 				echo '<br>Preço total: ' . money_format('%.2n', doubleval($precos[$chave]) * $qtd);

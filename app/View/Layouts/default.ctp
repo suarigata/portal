@@ -21,7 +21,7 @@
       <ul>
         <li id="current" style="border:none">
 			<?php
-				echo $this->Html->link('HOME', array('controller' => 'homes', 'action' => 'index'));
+				echo $this->Html->link('HOME', array('controller' => 'Homes', 'action' => 'index'));
 			?>
         </li>
         <li>
