@@ -8,6 +8,11 @@ class Produto extends AppModel{
 		$result = $client->call("getProdutoByCodigo", array("codigo" => $cod));
 		//$client = new SoapClient("http://localhost:8080/ProdUNICAMPServices/services/Servicos?wsdl");
 		//$result = $client->getProdutoByCodigo($cod);
+		$first = $result['return'];
+		if (!array_key_exists('0', $first)){
+			$aux['0'] = $first;
+			$result['return'] = $aux;
+		}
 		return $result;
 	}
 	
@@ -18,7 +23,7 @@ class Produto extends AppModel{
 		$result = $client->call("getListProdutoByFilter", array("nome" => $nome, "categoria" => $categoria, "fabricante" => $fabricante, "pesoMin" => $pesoMin, "pesoMax" =>$pesoMax));
 		//$result = $client->getListProdutoByFilter($nome, $categoria, $fabricante, $pesoMin, $pesoMax);
 		$first = $result['return'];
-		if ($first[0] == null){
+		if (!array_key_exists('0', $first)){
 			$aux['0'] = $first;
 			$result['return'] = $aux;
 		}
