@@ -25,6 +25,8 @@
         <li>
 			<?php echo $this->Html->link('CARRINHO', array('controller' => 'Carrinho', 'action' => 'listCarrinho')); ?>
         </li>
+        <?php if (CakeSession::read('cliente') != "") 
+			echo "<li>". $this->Html->link('MEUS DADOS', array('controller' => 'Clientes', 'action' => 'dadosCliente')). "</li>"; ?>
       </ul>
       
       <?php
