@@ -57,7 +57,7 @@
 	      	<?php
 	      		foreach($list->return as $value) {
 	      			if ($value->supercategoria == ""){
-	      				echo "<div class=\"supercategoria\">". $value->nome. "</div>";
+	      				echo "<div class=\"supercategoria\">". $this->Html->link($value->nome, array('controller' => 'produtos', 'action' => 'produtosListPorCategoria', $value->nome)). "</div>";
 						foreach($list->return as $value2) {
 							if ($value->nome == $value2->supercategoria){
 				      			echo $this->Html->link($value2->nome, array('controller' => 'produtos', 'action' => 'produtosListPorCategoria', $value2->nome)). '<br>';

@@ -17,6 +17,9 @@ TO REMOVE THE LINK, PLEASE MAKE A 10 DOLLARS DONATION at www.dotemplate.com/#don
 .supercategoria{
 	background:#9b251b;color:#FFFFFF;
 }
+.supercategoria a:link,.supercategoria a:visited{
+	color:#FFFFFF;
+}
 
 div.ls{
 	float:left;
