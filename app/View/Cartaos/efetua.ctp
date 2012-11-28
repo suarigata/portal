@@ -1,4 +1,4 @@
 <?php
-	print_r ($validate);
+	//print_r ($x);
 	//print_r ($parcelas);
 ?>
