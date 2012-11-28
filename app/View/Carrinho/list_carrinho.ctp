@@ -12,6 +12,11 @@
 		$this->Form->button('Finalizar Compra', array('type'=>'submit', 'style' => 'float: right; margin-left: 600px;')),
 	  	array('controller' => 'validacaoCreditos', 'action' => 'escolheFormaPagamento'),
 	  	array('escape' => false));
+	  	
+	echo $this->Html->link(
+		$this->Form->button('Calcular Frete', array('type'=>'submit', 'style' => 'float: right; margin-left: 600px;')),
+	  	array('controller' => 'entregas', 'action' => 'calculaFrete'),
+	  	array('escape' => false));  	
 ?>
 </div>
 
