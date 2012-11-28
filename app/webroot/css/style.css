@@ -57,6 +57,10 @@ div.lr{
 	height:30px;
 }
 
+.quantText{
+	width: 30px;
+}
+
 html {
 	background: $bottomWrapper.bg.color;
 	margin:0 0 0 -1px;
@@ -71,8 +75,6 @@ body {
 	display:table; 
 	width:100%;	
 }
-
-
 	
 					
 #wrapper {

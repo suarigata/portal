@@ -1,6 +1,8 @@
 <?php
 class CarrinhoController extends AppController{
 	
+	var $helpers = array('Form', 'Html', 'DezAstre');
+	
 	public function index(){
 	}
 	
@@ -40,7 +42,7 @@ class CarrinhoController extends AppController{
 		$this->set("precos",$precos);
 		$this->set("total", $total);
 	}
-
+	
 	public function addCarrinho($codigo){
 		$this->loadModel('Estoque');
 		$ret = $this->pegaDaSessao();
@@ -106,12 +108,14 @@ class CarrinhoController extends AppController{
 	}
 
 	public function limpaCarrinho(){
+		CakeSession::delete('cods'); // TODO ver se faz sentido apagar esses dois primeiros que eu pus
+		CakeSession::delete('precos');
 		CakeSession::delete('carrinho');
 		CakeSession::delete('produtos');
 		$this->redirect(array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
 	}
 	
-	public function atualizaEstoqueLimpaCarrinho(){ // TODO ver se pra limpar não faz o mesmo e terminar isso
+	public function atualizaEstoqueLimpaCarrinho(){ // TODO checar se isso tá funfando
 		$this->loadModel('Estoque');
 		$ret = $this->pegaDaSessao();
 		$cods = $ret['cods'];
