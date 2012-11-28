@@ -94,10 +94,7 @@ class CarrinhoController extends AppController{
 	}
 
 	public function colocaNaSessao($cods, $produtos, $precos, $qtds){
-		$this->Session->setFlash($cods);
-		$this->Session->setFlash($precos);
-		$this->Session->setFlash($qtds);
-		$this->Session->setFlash($produtos);
+		
 		CakeSession::write('carrinho',$cods);
 		CakeSession::write('precos',$precos);
 		CakeSession::write('qtds',$qtds);
@@ -112,6 +109,24 @@ class CarrinhoController extends AppController{
 		CakeSession::delete('carrinho');
 		CakeSession::delete('produtos');
 		$this->redirect(array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
+	}
+	
+	public function atualizaEstoqueLimpaCarrinho(){ // TODO ver se pra limpar não faz o mesmo e terminar isso
+		$this->loadModel('Estoque');
+		$ret = $this->pegaDaSessao();
+		$cods = $ret['cods'];
+		
+		if (!empty($cods)){
+			foreach ($cods as $chave => $value){
+				$this->Estoque->quantity($chave,-1*$value); // isso retorna 0 se funfou
+			}
+		}
+		
+		CakeSession::delete('cods');
+		CakeSession::delete('precos');
+		CakeSession::delete('carrinho');
+		CakeSession::delete('produtos');
+		$this->redirect(array('controller' => 'produtos'));
 	}
 }
 ?>
