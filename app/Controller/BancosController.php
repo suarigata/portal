@@ -12,6 +12,16 @@ class BancosController extends AppController{
 		$valorDaCompra=CakeSession::read('valorDaCompra');
 		$boleto = $this->Banco->emitirBoleto($cliente['nome'], $valorDaCompra);
 		$this->set('boleto', $boleto);
+		$this->set('id', $boleto->id);
+		$this->set('cnpj', $boleto->contrato_convenio->cnpj);
+		$this->set('razao', $boleto->contrato_convenio->razao_social);
+		$this->set('endereco', $boleto->contrato_convenio->endereco);
+		$this->set('cedente', $boleto->contrato_convenio->agencia_cedente);
+		$this->set('valor', $boleto->valor);
+		$this->set('vencimento', $boleto->data_vencimento);
+		$this->set('criacao', $boleto->data_criacao);
+		$this->set('cliente', $boleto->cliente);
+		
 	}
 }
 ?>
