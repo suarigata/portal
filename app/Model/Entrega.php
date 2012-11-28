@@ -2,9 +2,9 @@
 class Entrega extends AppModel{
 	
 	// calcular frete e prazo
-	public function calculaCusto($cepDest, $transportadora, $produtos){
+	public function calculaCusto($remetente, $destino, $transportadora, $produtos){
 		$client = new SoapClient("http://localhost:8000/grupo9/webservice/ws.php?wsdl");
-		$result = $client->calculaFreteEPrazo(03180100, $cepDest, $transportadora, $produtos);
+		$result = $client->calculaFreteEPrazo($remetente, $destino, $transportadora, $produtos);
 		return $result;
 	}
 	
@@ -14,9 +14,9 @@ class Entrega extends AppModel{
 		return $result;
 	}
 	
-	public function novaEntrega($cepDest, $transportadora, $produtos){
+	public function novaEntrega($remetente, $destino, $transportadora, $produtos){
 		$client = new SoapClient("http://localhost:8000/grupo9/webservice/ws.php?wsdl");
-		$result = $client->cadastrarEntrega(10, 03180100, $cepDest, $transportadora, $produtos);
+		$result = $client->cadastrarEntrega(10, $remetente, $destino, $transportadora, $produtos);
 		return $result;
 	}
 	
