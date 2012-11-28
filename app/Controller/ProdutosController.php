@@ -2,10 +2,16 @@
 class ProdutosController extends AppController{
 	
 	public function index(){
+		// XXX codigo teste antigo
 		//$this->set('produtoCod', $this->Produto->buscaCodigo("7891456622181"));
-		$this->set('listaProd', $this->Produto->buscaFiltro('','Videogames','Nintendo','',''));
+ 		//$this->set('listaProd', $this->Produto->buscaFiltro('','Videogames','Nintendo','',''));
 		//$this->set('listaCat', $this->Produto->listaCategorias());
 		//$this->set('listaFab', $this->Produto->listaFabricantes());
+		
+		$produtos = $this->Produto->buscaFiltro('','Perfumes','','','');
+		$this->set('produtos', $produtos);
+		$this->set('precos', $this->doHashPrecos($produtos));
+		$this->set('qtds', $this->doHashQuantidades($produtos));
 	}
 	
 	public function produtosListPorCategoria($categoria){

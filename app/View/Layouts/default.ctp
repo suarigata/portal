@@ -20,7 +20,7 @@
      <div id="dentronav">
       <ul>
         <li id="current" style="border:none">
-			<?php echo $this->Html->link('HOME', array('controller' => 'homes', 'action' => 'index')); ?>
+			<?php echo $this->Html->link('HOME', array('controller' => 'produtos', 'action' => 'index')); ?>
         </li>
         <li>
 			<?php echo $this->Html->link('CARRINHO', array('controller' => 'Carrinho', 'action' => 'listCarrinho')); ?>
