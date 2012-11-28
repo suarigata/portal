@@ -22,11 +22,11 @@ class AutenticacaosController extends AppController{
 		
 		if($login==0){
 			$this->loadModel('Cliente');
-			$login=$this->Cliente->clientData($this->request->data('login')); 
+			$login=$this->Cliente->clientData($this->request->data('login'));
 			CakeSession::write('cliente',$login);
 		}
 		
-		$this->redirect(array('controller' => 'homes', 'action' => 'index'));
+		$this->redirect($this->request->data('login_from_url'));
 	}
 	
 	public function del(){

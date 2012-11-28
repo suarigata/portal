@@ -25,6 +25,8 @@
         <li>
 			<?php echo $this->Html->link('CARRINHO', array('controller' => 'Carrinho', 'action' => 'listCarrinho')); ?>
         </li>
+        <?php if (CakeSession::read('cliente') != "") 
+			echo "<li>". $this->Html->link('MEUS DADOS', array('controller' => 'Clientes', 'action' => 'dadosCliente')). "</li>"; ?>
       </ul>
       
       <?php
@@ -34,6 +36,7 @@
 				<div class="ls texto"> <form action="/portal/autenticacaos/add" method="post"> </div>
 				<div class="ls texto"> <?php echo $this->Form->input('login'); ?> </div>
 				<div class="ls texto"> <?php echo $this->Form->input('password'); ?> </div>
+				<?php echo $this->Form->input('login_from_url', array('type' => 'hidden','value' => Helper::url(NULL,true))); ?>
 				<div class="ls botao"> <?php echo $this->Form->end('Login'); ?> </div>
 			</div>
 	  <?php
@@ -59,7 +62,7 @@
 							if ($value->nome == $value2->supercategoria){
 				      			echo $this->Html->link($value2->nome, array('controller' => 'produtos', 'action' => 'produtosListPorCategoria', $value2->nome)). '<br>';
 							}
-						}		
+						}
 					}
 	      		}
 	      	?>
