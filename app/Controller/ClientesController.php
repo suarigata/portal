@@ -9,6 +9,10 @@ class ClientesController extends AppController{
 	
 	public function dadosCliente(){
 		$logado = CakeSession::read('cliente');
-		$this->set('cliente', $this->Cliente->clientData($logado['cpf']));
+		if ($logado == "") {
+			$this->set('cliente', '');
+		}
+		else
+			$this->set('cliente', $this->Cliente->clientData($logado['cpf']));
 	}
 }
