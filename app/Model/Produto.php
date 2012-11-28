@@ -17,7 +17,7 @@ class Produto extends AppModel{
 	}
 	
 	//por categoria
-	public function buscaFiltro($nome, $categoria, $fabricante, $pesoMin, $pesoMax){
+	public function buscaFiltro($nome = NULL, $categoria = NULL, $fabricante = NULL, $pesoMin = NULL, $pesoMax = NULL){
 		$client = new nusoap_client("http://localhost:8080/ProdUNICAMPServices/services/Servicos?wsdl", true);
 		//$client = new SoapClient("http://localhost:8080/ProdUNICAMPServices/services/Servicos?wsdl");
 		$result = $client->call("getListProdutoByFilter", array("nome" => $nome, "categoria" => $categoria, "fabricante" => $fabricante, "pesoMin" => $pesoMin, "pesoMax" =>$pesoMax));

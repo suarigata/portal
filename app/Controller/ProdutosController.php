@@ -8,7 +8,7 @@ class ProdutosController extends AppController{
 		//$this->set('listaCat', $this->Produto->listaCategorias());
 		//$this->set('listaFab', $this->Produto->listaFabricantes());
 		
-		$produtos = $this->Produto->buscaFiltro('','Perfumes','','','');
+		$produtos = $this->Produto->buscaFiltro();
 		$this->set('produtos', $produtos);
 		$this->set('precos', $this->doHashPrecos($produtos));
 		$this->set('qtds', $this->doHashQuantidades($produtos));
