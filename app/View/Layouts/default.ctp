@@ -36,7 +36,7 @@
 				<div class="ls texto"> <form action="/portal/autenticacaos/add" method="post"> </div>
 				<div class="ls texto"> <?php echo $this->Form->input('login'); ?> </div>
 				<div class="ls texto"> <?php echo $this->Form->input('password'); ?> </div>
-				<?php echo $this->Form->input('login_from_url', array('type' => 'hidden','value' => Helper::url(NULL,true))); ?>
+				<?php echo $this->Form->input('login_from_url', array('type' => 'hidden','value' => $this->html->url(NULL,true))); ?>
 				<div class="ls botao"> <?php echo $this->Form->end('Login'); ?> </div>
 			</div>
 	  <?php
