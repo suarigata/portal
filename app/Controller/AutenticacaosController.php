@@ -44,6 +44,6 @@ class AutenticacaosController extends AppController{
 		
 		CakeSession::delete('cliente');
 		
-		$this->redirect(array('controller' => 'homes', 'action' => 'index'));
+		$this->redirect(array('controller' => 'produtos'));
 	}
 }
