@@ -67,10 +67,26 @@
 	      		}
 	      	?>
       	</div>
-        
+        <div style='width:800px' > 
+        	<?php
+        		$categoria = array('');
+        		foreach($list->return as $value) {
+	      			if ($value->supercategoria == ""){
+	      				$categoria[$value->nome] = $value->nome;
+					}
+	      		}
+	      		echo $this->Form->create(false, array(
+   				 'url' => array('controller' => 'produtos', 'action' => 'buscaProduto')
+				));
+	      		echo $this->Form->input('busca', array('value' => 'Digite para buscar', 'style' => 'width:250px', 'div' => false)); 
+        		echo $this->Form->input('categoria', array('options' => $categoria, 'div' => false));
+        		echo $this->Form->end('Buscar', array('div' => false, 'label' => false, 'style' => 'float:right')) . "<br>";
+        	?> 
+        </div>
         <div id="content"> 
           <div style="margin-top:20px;">
             
+        	
             <?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
             

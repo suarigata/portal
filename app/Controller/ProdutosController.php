@@ -65,5 +65,16 @@ class ProdutosController extends AppController{
 		return $qtdsHash;
 	}
 	
+	public function buscaProduto () {
+		$name = $this->request->data('busca');
+		$superCategoria = $this->request->data('categoria');
+		
+		$produtos = $this->Produto->buscaFiltro($name, $superCategoria);
+		
+		$this->set('produtos', $produtos);
+		$this->set('precos', $this->doHashPrecos($produtos));
+		$this->set('qtds', $this->doHashQuantidades($produtos));
+	}
+	
 }
 ?>
