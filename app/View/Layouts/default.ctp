@@ -4,7 +4,7 @@
 		<?php echo $this->Html->charset(); ?>
 		<title>Dez Astre</title>
 		<?php
-			echo $this->Html->meta('icon','dezastre.ico');
+			echo $this->Html->meta('icon',$this->webroot.'/dezastre.ico');
 			echo $this->Html->css('style');
 			echo $this->fetch('meta');
 			echo $this->fetch('css');
