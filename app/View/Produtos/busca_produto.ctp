@@ -1,5 +1,5 @@
+<h1 class="produtoTitle ui-widget-header ui-corner-all">Resultados</h1>
 <?php
-	echo 'Resultados';
 	if (!array_key_exists('faultcode', $produtos)){
 		$produtos = $produtos['return'];
 		foreach($produtos as $chave2 => $produto) {
@@ -27,7 +27,7 @@
 											array('controller' => 'produtos', 'action' => 'produtoPorCodigo', $produto['codigo']),
 											array('escape' => false));
 				}else{
-					echo '<b>Produto indisponível</b>';
+					echo '<b style="color: #FF0000;">Produto indisponível</b>';
 				}
 ?>
 			</div>
