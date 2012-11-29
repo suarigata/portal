@@ -4,7 +4,7 @@ function quantidade(codigo,incremento){
 		url: "/portal/carrinho/addCarrinho/"+codigo+"/"+incremento,
 		async: false,
 		success: function(msg){
-			alert( "Data Saved: " + msg );
+			location.reload();//alert( "Data Saved: " + msg );
 		}
 	});
 }
