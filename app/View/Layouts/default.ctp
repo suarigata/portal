@@ -69,7 +69,7 @@
       	</div>
         <div style='width:800px' > 
         	<?php
-        		$categoria = array('');
+        		$categoria = array('Todas' => 'Todas');
         		foreach($list->return as $value) {
 	      			if ($value->supercategoria == ""){
 	      				$categoria[$value->nome] = $value->nome;

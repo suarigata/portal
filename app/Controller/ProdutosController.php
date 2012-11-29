@@ -69,7 +69,12 @@ class ProdutosController extends AppController{
 		$name = $this->request->data('busca');
 		$superCategoria = $this->request->data('categoria');
 		
-		$produtos = $this->Produto->buscaFiltro($name, $superCategoria);
+		$this->set('cat', $superCategoria);
+		
+		if ($superCategoria == 'Todas')
+			$produtos = $this->Produto->buscaFiltro($name);
+		else
+			$produtos = $this->Produto->buscaFiltro($name, $superCategoria);
 		
 		$this->set('produtos', $produtos);
 		$this->set('precos', $this->doHashPrecos($produtos));
