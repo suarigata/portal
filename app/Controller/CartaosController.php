@@ -14,19 +14,22 @@ class CartaosController extends AppController{
 	
 	public function pagamento($tipo){
 		$valorDaCompra=CakeSession::read('valorDaCompra');
-		//$this->set('parcelas', $this->Cartao->numParcelas($valorDaCompra, $tipo));
-		//$number=$this->Cartao->validaTransacao($this->request->data('numero'), $valorDaCompra);
-		//$this->set('validate',$this->Cartao->validaTransacao($this->request->data('numero'), $valorDaCompra));
 		CakeSession::write('bandeira',$tipo);
+		$parcelas = array();
+		$x = $this->Cartao->numParcelas($valorDaCompra, $tipo);
+		foreach($x as $tipo){
+			$parcelas[] = $tipo['installments'];
+		}
+		$this->set('parcelas', $parcelas);
 	}	
 	
 	public function efetua(){
 		$cliente=CakeSession::read('cliente');
 		$valorDaCompra=CakeSession::read('valorDaCompra');
 		$bandeira=CakeSession::read('bandeira');
-		//$this->set('x', $bandeira);
-		//$this->set('parcelas', $this->Cartao->numParcelas($valorDaCompra, $bandeira));
-		$this->set('validate',$this->Cartao->realizaTransacao('10', $bandeira, $this->request->data('numero'), $cliente['nome'], $cliente['cpf'] , $this->request->data('codigo'), $this->request->data('validade'), $this->request->data('parcela')));
+		$parcela = $this->request->data('parcela') +1;
+		$this->set('parcelas', $parcela);
+		$this->set('validate',$this->Cartao->realizaTransacao('10', $bandeira, $this->request->data('numero'), $cliente['nome'], $cliente['cpf'] , $this->request->data('codigo'), $this->request->data('validade'), $parcela));
 	}
 }
 ?>

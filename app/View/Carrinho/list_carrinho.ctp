@@ -1,8 +1,3 @@
-<?php
-// Jquery ta dentro do addon
-echo $this->Html->script('addon'); // TODO tem que tirar isso
-echo $this->Html->script('carrinho');
-?>
 
 <h2>CARRINHO</h2>
 
@@ -38,7 +33,7 @@ echo $this->Html->script('carrinho');
 			
 			echo '<div class="infos" style="float:left; margin: 10px; width: 550px; height: 100px;">';
 				echo $this->Html->link(utf8_encode($produto['nome']), array('controller' => 'produtos', 'action' => 'produtoPorCodigo', $produto['codigo']));
-				echo '<br>Quantidade: ' . $this->dezastre->quantidade($chave,$qtd);
+				echo '<br>Quantidade: ' . $this->Form->text('qtd', array('value' => $qtd, 'style' => 'width: 40px'));
 				echo '<br>Preço unitário: ' . money_format('%.2n', doubleval($precos[$chave]));
 				echo '<br>Preço total: ' . money_format('%.2n', doubleval($precos[$chave]) * $qtd);
 				echo $this->Html->link('<br>Excluir item', 
@@ -48,8 +43,6 @@ echo $this->Html->script('carrinho');
 		}
 	}
 	echo '<div style="flaot: left;">PREÇO TOTAL R$ ' . money_format('%.2n', $total) . '</div>';
-	
-	echo $this->Js->writeBuffer();
 ?>
 
 <script>

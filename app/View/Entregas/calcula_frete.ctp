@@ -8,9 +8,9 @@
 	
 	echo $this->Form->input('remetente', array('label' => 'CEP remetente'));	
 	echo $this->Form->input('destino', array('label' => 'CEP destino'));
-	echo $this->Form->input('tipoEntrega', array('label' => 'Forma de Entrega'));
+	echo $this->Form->input('tipoEntrega', array('label' => 'Forma de Entrega', 'options' => $tipo));
 	echo $this->Form->end('OK'); 
-
+echo $x;
 print_r($frete);
 print_r($car);	
 ?>
