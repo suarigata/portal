@@ -16,7 +16,12 @@
 	  	array('escape' => false));	
 	  	
 	echo $this->Html->link(
-		$this->Form->button('Atendimento ao Cliente', array('type'=>'submit', 'style' => 'float: left; margin-right: 600px;')),
+		$this->Form->button('Criar Ticket', array('type'=>'submit', 'style' => 'float: left; margin-right: 600px;')),
 	  	array('controller' => 'atendimentos', 'action' => 'seleciona'),
-	  	array('escape' => false));  		
+	  	array('escape' => false)); 
+	  	
+	echo $this->Html->link(
+		$this->Form->button('Consultar Tickets', array('type'=>'submit', 'style' => 'float: left; margin-right: 600px;')),
+	  	array('controller' => 'atendimentos', 'action' => 'consulta'),
+	  	array('escape' => false));  	  	 		
 ?>

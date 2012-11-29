@@ -1,22 +1,11 @@
 <!-- File: /app/View/Atendimento/seleciona.ctp -->
+<h1>Criar Ticket</h1>
 <?php
-	echo $this->Html->link(
-		$this->Form->button('Reclamação', array('type'=>'submit', 'style' => 'float: left; margin-right: 600px;')),
-	  	array('controller' => '', 'action' => ''),
-	  	array('escape' => false));
-	  	
-	  echo $this->Html->link(
-		$this->Form->button('Sugestão', array('type'=>'submit', 'style' => 'float: left; margin-right: 600px;')),
-	  	array('controller' => '', 'action' => ''),
-	  	array('escape' => false));
-	  	
-	 echo $this->Html->link(
-		$this->Form->button('Dúvida', array('type'=>'submit', 'style' => 'float: left; margin-right: 600px;')),
-	  	array('controller' => '', 'action' => ''),
-	  	array('escape' => false));
-	  	
-	 echo $this->Html->link(
-		$this->Form->button('Pedido', array('type'=>'submit', 'style' => 'float: left; margin-right: 600px;')),
-	  	array('controller' => '', 'action' => ''),
-	  	array('escape' => false)); 	 		
+	echo $this->Form->create(false, array(
+    	'url' => array('controller' =>'clientes', 'action' => 'dadosCliente')
+		));
+
+	echo $this->Form->input('texto', array('label' => 'Texto'));
+	echo $this->Form->input('tipo', array('label' => 'Tipo de Chamada', 'options' => $tipoChamada));
+	echo $this->Form->end('Enviar'); 
 ?>
