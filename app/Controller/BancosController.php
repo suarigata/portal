@@ -8,6 +8,8 @@ class BancosController extends AppController{
 	}
 	
 	public function gerarBoleto(){
+		$this->layout = 'boleto';
+		
 		$cliente=CakeSession::read('cliente');
 		$valorDaCompra=CakeSession::read('valorDaCompra');
 		$boleto = $this->Banco->emitirBoleto($cliente['nome'], $valorDaCompra);
