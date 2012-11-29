@@ -9,19 +9,32 @@
 	}
 	else
 			echo '<b>Não há cliente logado</b>';
-			
+	
 	echo $this->Html->link(
-		$this->Form->button('Acompanhar Compras', array('type'=>'submit', 'style' => 'float: left; margin-right: 600px;')),
-	  	array('controller' => '', 'action' => ''),
-	  	array('escape' => false));	
-	  	
+			$this->Form->button('Acompanhar Compras', array('type'=>'submit', 'style' => 'float: left; margin-right: 600px;')),
+			array('controller' => '', 'action' => ''),
+			array('escape' => false));	
+	
 	echo $this->Html->link(
-		$this->Form->button('Criar Ticket', array('type'=>'submit', 'style' => 'float: left; margin-right: 600px;')),
-	  	array('controller' => 'atendimentos', 'action' => 'seleciona'),
-	  	array('escape' => false)); 
-	  	
+			$this->Form->button('Criar Ticket', array('type'=>'submit', 'style' => 'float: left; margin-right: 600px;')),
+			array('controller' => 'atendimentos', 'action' => 'seleciona'),
+			array('escape' => false));
+	
 	echo $this->Html->link(
-		$this->Form->button('Consultar Tickets', array('type'=>'submit', 'style' => 'float: left; margin-right: 600px;')),
-	  	array('controller' => 'atendimentos', 'action' => 'consulta'),
-	  	array('escape' => false));  	  	 		
+			$this->Form->button('Consultar Tickets', array('type'=>'submit', 'style' => 'float: left; margin-right: 600px;')),
+			array('controller' => 'atendimentos', 'action' => 'consulta'),
+			array('escape' => false)); 
 ?>
+
+<script>
+	$(function() {
+		$("#navHome").removeClass('current');
+        $("#navCarrinho").removeClass('current');
+		$("#navDados").addClass('current');
+    });
+    
+    $('#dentronav ul li').click(function() {
+        $(".current").removeClass('current');
+    	$(this).addClass('current');
+    });
+</script>

@@ -5,7 +5,8 @@
 	echo $this->Form->create(false, array(
     'url' => array('controller' => 'entregas', 'action' => 'calculaFrete')
 	));
-
+	
+	echo $this->Form->input('remetente', array('label' => 'CEP remetente'));	
 	echo $this->Form->input('destino', array('label' => 'CEP destino'));
 	echo $this->Form->input('tipoEntrega', array('label' => 'Forma de Entrega', 'options' => $tipo));
 	echo $this->Form->end('OK'); 

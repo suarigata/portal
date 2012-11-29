@@ -10,8 +10,98 @@ TO REMOVE THE LINK, PLEASE MAKE A 10 DOLLARS DONATION at www.dotemplate.com/#don
 ----------------------------------------------------------------------------------------
 */
 
+#left{
+	float: left;
+	width: 180px;
+	padding: 10px;
+}
+
+#menuTitle{
+	text-align: center;
+	margin-bottom: 10px;
+	width: 180px;
+}
+
+.produto{
+	float: left;
+	width: 180px;
+	height: 270px;
+	text-align: center;
+	font-size: 12px;
+	margin: 5px;
+	color: black;
+}
+
+.produtoTitle{
+	margin: 1px 0px 10px;
+	height: 50px;
+	color: black;
+}
+
+.produtoImagem{
+}
+
+.produtoDetalhe{
+	float: left;
+	margin: 5px;	
+}
+
+.produtoPreco{
+	margin: 5px;	
+}
+
+.produtoLeft{
+	float: left;
+	width: 200px;
+	margin: 10px;	
+}
+
+.produtoLeft button{
+	float: left;
+	text-align: center;
+	width: 202px;
+	height: 50px;	
+	font-family: Trebuchet MS,Helvetica,Arial,sans-serif;
+	font-weight: bold;
+}
+
+.busca{
+	float: left;
+	margin: 11px 5px 6px;
+	padding-right: 25px;
+	height: 35px;
+}
+
+.busca label{
+	font-size: 14px;
+	font-weight: bold;
+	padding: 5px;
+	margin-left: 25px;
+	margin-right: 15px;
+	color: black;
+}
+
+.detalhes{
+	float: left;
+	margin-right: 5px;
+	width: 750px;
+}
+
+.logado{
+	
+}
+
+.submit{
+	float: left;
+	padding: 5px 5px 0 25px;
+}
+
 #menu{
-	margin:0px;float: left; width: 200px; background:#DDDDDD;padding: 1px;
+	margin:0px;
+	float: left;
+	width: 180px;
+	background:#DDDDDD;
+	padding: 1px;
 }
 
 .supercategoria{
@@ -49,7 +139,7 @@ div.lr{
 }
 
 #dentronav{
-	width:1000px;
+	width:1200px;
 	display:table;
 	margin:0 auto;
 	padding:0;
@@ -66,33 +156,18 @@ html {
 	margin:0 0 0 -1px;
 	padding:0;	
 	overflow-Y: scroll;
+	font-family: Trebuchet MS,Helvetica,Arial,sans-serif;
 }
-
-
-body {
-	padding:0;
-	margin :0;
-	display:table; 
-	width:100%;	
-}
-	
 					
 #wrapper {
 	margin:0 auto ;
 	width:100%;
 }
 
-					body {
-	background-color:#FFFFFF;
-}
-
 #wrapper {
 	border-top: 0px solid #ffffff;
 }
 	
-
-
-					
 #topWrapper {
 	width:100%;
 	height:150px;
@@ -101,8 +176,6 @@ body {
 	background-position:center top ;
 	background-repeat:repeat-x;
 }
-
-
 					
 #topBanner {
 	width:1000px;
@@ -112,14 +185,9 @@ body {
 	background-repeat:no-repeat;
 }
 
-	
-
 #topnav {
 	background:transparent url('../img/css/hmenu.jpg') repeat-x top left;
 }
-
-
-					
 
 #topnav {
 	height:30px;
@@ -140,62 +208,42 @@ body {
 	float:left
 }
 
-
 #topnav ul li {
 	display:block;
 	float:left;
 	margin:0;
 	padding:0;
 	background:transparent url('../img/css/hmenu.jpg') repeat-x top left;
-
+	width: 200px;
 }
-
 
 #topnav ul li a {
 	display:block;
 	float:left;
 	color:#000000;
 	text-decoration:none;
-	padding:0px 50px ;
 	line-height:30px;
 	font-weight:bold;
+	width: 200px;
 }
 
 
-#topnav ul li a:hover, #topnav li#current a {
+#topnav ul li a:hover, #topnav li.current a {
 	color:#9b251b;
-	background:transparent url('../img/css/hmenu-sel.jpg') repeat-x top left;
+	/*background:transparent url('../img/css/hmenu-sel.jpg') repeat-x top left;*/
+	background-color: #F7FFF7;
 }
-
-
-	
 
 #topnav ul {
 	
 }
 
-
-
-
-body {
-	background-position : center 180px;
-}
-
-	
-
-					
-
-
 #container {
 	margin:0 auto;
-	width:1000px;
+	width:1200px;
 	min-height:770px;
 	background:#F7FFF7;
 }
-
-
-					
-
 
 #banner {
 	margin:15px auto;
@@ -260,7 +308,7 @@ body {
 	
 
 #content {
-	width:790px;
+	width:990px;
 	margin:0 auto ;
 	text-align:left;
 	float: left;
@@ -269,12 +317,16 @@ body {
 #content p {
 	text-align:justify;
 }
-	
-	
-					
+
+/*
+    a:link........define o estilo do link no estado inicial;
+    a:visited...define o estilo do link visitado;
+    a:hover.....define o estilo do link quando passa-se o mouse sobre ele;
+    a:active....define o estilo do link ativo (o que foi "clicado").
+*/
 
 #content a:link, #content a:visited{
-	color:#9b251b;
+	color:#000000;
 	font-weight:bold;
 }
 
@@ -325,11 +377,15 @@ body {
 
 body {
 	color:#444444;
-	font-family: 'Trebuchet MS', sans-serif;
+	font-family: Trebuchet MS,Helvetica,Arial,sans-serif;
 	font-size: 13px;
 	font-style: normal;
 	font-weight: normal;
 	text-transform: normal;
+	padding:0;
+	margin :0;
+	display:table; 
+	width:100%;	
 }
 
 p {

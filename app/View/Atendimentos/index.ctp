@@ -3,7 +3,6 @@
 <?php
 print_r($ticket);
 print_r($cod);
-print_r ($resposta);
 print_r($cpf);
-
+echo $resposta;
 ?>

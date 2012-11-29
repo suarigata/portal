@@ -44,3 +44,16 @@
 	}
 	echo '<div style="flaot: left;">PREÇO TOTAL R$ ' . money_format('%.2n', $total) . '</div>';
 ?>
+
+<script>
+	$(function() {
+		$("#navHome").removeClass('current');
+        $("#navCarrinho").addClass('current');
+		$("#navDados").removeClass('current');
+    });
+    
+    $('#dentronav ul li').click(function() {
+        $(".current").removeClass('current');
+    	$(this).addClass('current');
+    });
+</script>
