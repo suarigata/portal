@@ -1,7 +1,7 @@
 <?php
 class CarrinhoController extends AppController{
 	
-	var $helpers = array('Form', 'Html', 'DezAstre');
+	public $helpers = array('Js', 'Form', 'Html', 'DezAstre');
 	
 	public function index(){
 	}
@@ -43,30 +43,27 @@ class CarrinhoController extends AppController{
 		$this->set("total", $total);
 	}
 	
-	public function addCarrinho($codigo){
+	public function addCarrinho($codigo,$incremento = 1){
 		$this->loadModel('Estoque');
 		$ret = $this->pegaDaSessao();
 		$cods = $ret['cods'];
 		$qtds = $ret['qtds'];
 		$precos = $ret['precos'];
 		$produtos = $ret['produtos'];
-		$new = true;
-		if (!empty($cods)){
-			foreach ($cods as $chave => $value){
-				if ($chave == $codigo){
-					$cods[$chave]++;
-					$new = false;
-				}
-			}
+		if (!empty($cods) && $cods[$codigo]!=''){
+			$cods[$codigo]+=$incremento;
+			if($cods[$codigo]<1)
+				removerItem($codigo); //TODO talvez redirect
 		}
-		if ($new == true){
-			$cods[$codigo] = 1;
-			$produtos[$codigo] = $this->Produto->buscaCodigo($codigo);
-			$produtoEstoque = $this->Estoque->currentPrice($codigo);
-			$precos[$codigo] = $produtoEstoque['product']['price'];
-			$produtoEstoque = $this->Estoque->currentQuantity($codigo);
-			$qtds[$codigo] = $produtoEstoque['product']['quantity'];
-		}		
+		else
+			if($incremento==1){
+				$cods[$codigo] = 1;
+				$produtos[$codigo] = $this->Produto->buscaCodigo($codigo);
+				$produtoEstoque = $this->Estoque->currentPrice($codigo);
+				$precos[$codigo] = $produtoEstoque['product']['price'];
+				$produtoEstoque = $this->Estoque->currentQuantity($codigo);
+				$qtds[$codigo] = $produtoEstoque['product']['quantity'];
+			}
 		$this->colocaNaSessao($cods, $produtos, $precos, $qtds);
 		$this->redirect(array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
 	}
@@ -122,7 +119,7 @@ class CarrinhoController extends AppController{
 		
 		if (!empty($cods)){
 			foreach ($cods as $chave => $value){
-				$this->Estoque->quantity($chave,-1*$value); // isso retorna 0 se funfou
+				$this->Estoque->quantity($chave,-1*$value); // TODO se não retorna 0, rollback
 			}
 		}
 		

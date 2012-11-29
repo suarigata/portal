@@ -1,15 +1,20 @@
 <?php
 class DezAstreHelper extends AppHelper{
 	
-	var $helpers = array('Html','Form');
+	public $helpers = array('Js','Html','Form');
 	
 	public function quantidade($codigo,$quantidade){
 		
 		$componente='<div class="quantDiv">';
-		$componente.=$this->Form->button('-',array('type' => 'button','onClick' => 'javascript:alert("ola");'));
-		$componente.='<input class="quantText" type="text" name="'.$codigo.'" value="'.$quantidade.'" readonly="readonly" />';
-		$componente.='<input type="button" onClick="javascript:alert(\''.$codigo.'\');" value="+" />';
+		$componente.=$this->Form->button('-',array('type' => 'button','id' => $codigo.'m'));
+		$componente.=$this->Form->input($codigo,array('div' => false,'value' => $quantidade,'readonly' => 'readonly','label' => false));
+		$componente.=$this->Form->button('+',array('type' => 'button','id' => $codigo.'p'));
 		$componente.='</div>';
+		
+		$this->Js->get('#'.$codigo.'m');
+		$this->Js->event('click', "quantidade($codigo,-1);", array('stop' => false));
+		$this->Js->get('#'.$codigo.'p');
+		$this->Js->event('click', "quantidade($codigo,1);", array('stop' => false));
 		
 		return $componente;
 	}
