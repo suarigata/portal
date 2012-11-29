@@ -24,16 +24,17 @@ class EntregasController extends AppController{
 			$list[$i] = $produtos;
 			$i = $i + 1;
 		}
-		$remetente = $this->request->data('remetente');
 		$destino = $this->request->data('destino');
 		$this->set('tipo', $aux);
 		$tipo = $this->request->data('tipoEntrega');
-		$this->set('x', $aux[$tipo]);
+		//$this->set('x', $aux[$tipo]);
 		//$this->set('car', $list);
 		
 		//Tem q descomenta a linha debaixo
-		//$frete = $this->Entrega->calculaCusto($remetente, $destino, $tipo, $list);
-		//$this->set('frete', $frete);		
+		if($destino != ''){
+			$frete = $this->Entrega->calculaCusto($destino, $tipo, $list);
+			$this->set('frete', $frete);
+		}		
 	}
 }
 ?>

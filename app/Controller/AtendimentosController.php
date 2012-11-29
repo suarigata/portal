@@ -9,5 +9,9 @@ class AtendimentosController extends AppController{
 		//$this->set('consulta', $this->Entrega->consultarEntrega(1));
 	}
 	
+	public function seleciona(){
+		$this->set('teste', 'sdsadsad');
+	}
+	
 }
 ?>
