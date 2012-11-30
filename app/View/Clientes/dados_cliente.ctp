@@ -25,6 +25,7 @@
 				$this->Form->button('Consultar Tickets', array('type'=>'submit')),
 				array('controller' => 'atendimentos', 'action' => 'consulta'),
 				array('escape' => false)); 
+	}
 ?>
 	</div>
 </div>
