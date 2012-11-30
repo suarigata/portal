@@ -60,12 +60,12 @@
 class DATABASE_CONFIG {
 
 	public $default = array(
-		'datasource' => 'Database/Mysql',
+		'datasource' => 'Database/Postgres',
 		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'user',
-		'password' => 'password',
-		'database' => 'database_name',
+		'host' => 'staff01.lab.ic.unicamp.br',
+		'login' => 'grupo10',
+		'password' => 'ro;M7Iethi',
+		'database' => 'grupo10',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
