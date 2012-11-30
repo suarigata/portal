@@ -43,7 +43,7 @@ class CarrinhoController extends AppController{
 		$this->set("total", $total);
 	}
 	
-	public function addCarrinho($codigo,$incremento = 1,$redirect = 1){
+	public function addCarrinho($codigo,$incremento = 1,$redirect = 0){
 		
 		$this->loadModel('Estoque');
 		$ret = $this->pegaDaSessao();
@@ -70,7 +70,7 @@ class CarrinhoController extends AppController{
 				$qtds[$codigo] = $produtoEstoque['product']['quantity'];
 			}
 		$this->colocaNaSessao($cods, $produtos, $precos, $qtds);
-		if($redirect == 1)
+		if($redirect == 0)
 			$this->redirect(array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
 		else
 			$this->redirect(array('controller' => 'Carrinho', 'action' => 'itemQtd',$cods[$codigo]));
