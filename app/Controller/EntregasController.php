@@ -47,6 +47,7 @@ class EntregasController extends AppController{
 			//$this->redirect(array('controller' => 'validacaoCreditos','action' => 'escolheFormaPagamento'));
 			$valor = CakeSession::read('valorDaCompra');
 			$valor = $valor + $frete->frete;
+			CakeSession::write('totalCompra',$valor);
 			$this->Session->setFlash('FRETE: R$ '.money_format('%.2n', $frete->frete).', com PRAZO de '.$frete->prazo.' dias. O valor total será de R$ '.money_format('%.2n', $valor).'.');
 		}		
 	}
@@ -67,9 +68,20 @@ class EntregasController extends AppController{
 			$list[$i] = $produtos;
 			$i = $i + 1;
 		}
+		$tipo = CakeSession::read('bandeira');
+		if($tipo == 'boleto'){
+			$this->loadModel('Banco');
+			$cliente = CakeSession::read('cliente');
+			$valorDaCompra = CakeSession::read('totalCompra');
+			$boleto = $this->Banco->emitirBoleto($cliente['nome'], $valorDaCompra);
+			CakeSession::write('boleto',$boleto);
+			CakeSession::write('id_pg',$boleto->id);
+		}
 		$entrega = $this->Entrega->novaEntrega($destino, $tipoEntrega, $list);
+		CakeSession::write('id_entrega',$entrega);
 		//$teste = $this->Entrega->consultarEntrega($entrega);
-		$this->set('tipo', $entrega);
+		//$this->set('tipo', $entrega);
+		$this->redirect(array('controller' =>'carrinho','action' => 'atualizaEstoqueLimpaCarrinho'));
 	}
 }
 ?>

@@ -34,7 +34,7 @@ public function pagamento($tipo){
 			$transacao = $this->Cartao->realizaTransacao($valorDaCompra, $brand, $numero, $cliente['nome'], $cliente['cpf'] , $codigo, $validade, $par);
 			if($transacao != 0){
 				CakeSession::write('parcela',$par);
-				CakeSession::write('transacao',$transacao);
+				CakeSession::write('id_pg',$transacao['transaction_id']);
 				$this->Session->setFlash('O pagamento foi realizado com sucesso');
 				$this->redirect(array('controller' =>'entregas','action' => 'finalizaCompra'));
 				//guarda o pedido

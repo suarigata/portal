@@ -43,7 +43,7 @@ class CarrinhoController extends AppController{
 		$this->set("total", $total);
 	}
 	
-	public function addCarrinho($codigo,$incremento = 1,$redirect = 0){
+	public function addCarrinho($codigo,$incremento = 1,$redirect = 1){
 		
 		$this->loadModel('Estoque');
 		$ret = $this->pegaDaSessao();
@@ -56,8 +56,8 @@ class CarrinhoController extends AppController{
 			if($cods[$codigo]<1){
 				$cods[$codigo]=0;
 				// XXX talvez arranque do carrinho se zerar
-				$this->redirect(array('controller' => 'Carrinho', 'action' => 'removerItem',$codigo,$redirect)); //TODO talvez redirect
-				// TODO quando for abrir o carrinho poderia arrancar itens zerados se não redirecionar acima
+				// $this->redirect(array('controller' => 'Carrinho', 'action' => 'removerItem',$codigo,$redirect)); //TODO talvez redirect
+				// TODO quando for abrir o carrinho poderia arrancar itens zerados se nï¿½o redirecionar acima
 			}
 		}
 		else
@@ -70,13 +70,13 @@ class CarrinhoController extends AppController{
 				$qtds[$codigo] = $produtoEstoque['product']['quantity'];
 			}
 		$this->colocaNaSessao($cods, $produtos, $precos, $qtds);
-		if($redirect == 0)
+		if($redirect == 1)
 			$this->redirect(array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
 		else
-			$this->redirect(array('controller' => 'Carrinho', 'action' => 'itemQtd',isset($cods[$codigo])?$cods[$codigo]:0,$redirect));//isset($cods[$codigo])?$cods[$codigo]:0),1);
+			$this->redirect(array('controller' => 'Carrinho', 'action' => 'itemQtd',$cods[$codigo]));
 	}
 
-	public function removerItem($codigo,$redirect = 0){
+	public function removerItem($codigo,$redirect = 1){
 		$ret = $this->pegaDaSessao();
 		$cods = $ret['cods'];
 		$qtds = $ret['qtds'];
@@ -91,7 +91,7 @@ class CarrinhoController extends AppController{
 		unset($produtos[$codigo]);
 		
 		$this->colocaNaSessao($cods, $produtos, $precos, $qtds);
-		if($redirect == 0)
+		if($redirect == 1)
 			$this->redirect(array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
 		else
 			$this->redirect(array('controller' => 'Carrinho', 'action' => 'itemQtd',0));
@@ -130,22 +130,52 @@ class CarrinhoController extends AppController{
 		$this->redirect(array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
 	}
 	
-	public function atualizaEstoqueLimpaCarrinho(){ // TODO checar se isso tá funfando
+	public function atualizaEstoqueLimpaCarrinho(){ // TODO checar se isso tï¿½ funfando
 		$this->loadModel('Estoque');
 		$ret = $this->pegaDaSessao();
 		$cods = $ret['cods'];
 		
 		if (!empty($cods)){
 			foreach ($cods as $chave => $value){
-				$this->Estoque->quantity($chave,-1*$value); // TODO se não retorna 0, rollback
+				$this->Estoque->quantity($chave,-1*$value); // TODO se nï¿½o retorna 0, rollback
 			}
 		}
+		
+		$this->loadModel('Pedido');
+		$cliente = CakeSession::read('cliente');
+		$forma = CakeSession::read('bandeira');
+		if($forma == 'boleto'){
+			$tipo = 0;
+		}
+		else $tipo = 1;
+		$id = CakeSession::read('id_pg');
+		$id_entrega = CakeSession::read('id_entrega');
+		$destino = CakeSession::read('cep');
+		$aux = array();
+		$aux['cpf'] = $cliente['cpf'];
+		$aux['id_pgmt'] = $id;
+		$aux['id_entrega'] = $id_entrega;
+		$aux['pagamento'] = $tipo;
+		$aux['cep_entrega'] = $destino;
+		//$aux = array(['cpf']=>$cliente['cpf'],['id_pgmt']=> $id, ['id_entrega']=>$id_entrega, ['pagamento'] =>$tipo);
+		$pedido = array();
+		$pedido['Pedido'] = $aux;
+		$this->Pedido->save($pedido);
 		
 		CakeSession::delete('cods');
 		CakeSession::delete('precos');
 		CakeSession::delete('carrinho');
 		CakeSession::delete('produtos');
-		$this->redirect(array('controller' => 'produtos'));
+		CakeSession::delete('bandeira');
+		CakeSession::delete('cep');
+		CakeSession::delete('valorDaCompra');
+		CakeSession::delete('frete');
+		CakeSession::delete('prazo');
+		
+		//$teste = CakeSession::read('tipo');
+		$this->set('tipo', $forma);
+		$this->set('id', $id);
+		//$this->redirect(array('controller' => 'produtos'));
 	}
 }
 ?>
