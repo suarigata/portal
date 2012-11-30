@@ -18,13 +18,10 @@ class PedidosController extends AppController {
 		$valor = 0;
 		$data = 'data';
 		
-		$this->set('tipo_pgt', $order['Pedido']['pagamento']);
-		$this->set('id_pgt', $order['Pedido']['id_pgmt']);
-		$this->set('id_entrega', $order['Pedido']['id_entrega']);
 		
-		foreach ($orders as $order) {
+		foreach ($orders as $order) {			
 			if ($order['Pedido']['pagamento'] == 0) {
-				$pgt = $this->Banco->recuperarBoleto(180);//$order['Pedido']['id_pgmt']);
+				$pgt = $this->Banco->recuperarBoleto($order['Pedido']['id_pgmt']);
 				$compra = $boleto[$pgt->estado];
 				$valor = $pgt->valor;
 				$data = $pgt->data_criacao;
@@ -36,7 +33,7 @@ class PedidosController extends AppController {
 				$data = $pgt['date'];
 			}
 			
-			$entrega = $this->Entrega->consultarEntrega(345);//$order['Pedido']['id_entrega']); 
+			$entrega = $this->Entrega->consultarEntrega($order['Pedido']['id_entrega']); 
 			
 			$info[] = array('id' => $order['Pedido']['id'], 'cpf' => $order['Pedido']['cpf'], 'data' => $data ,'valor' => $valor, 'compra' => $compra, 'entrega' => $entrega);
 		}

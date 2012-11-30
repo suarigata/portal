@@ -32,7 +32,9 @@
             <?php echo $pedido['data']; ?>
         </td>
         <td>
-            <?php echo $this->Html->link('Mais', array('controller' => 'adquiridos', 'action' => 'details', array($pedido['id'], $tipo_pgt, $id_pgt, $id_entrega))); ?>
+            <?php 
+            	echo $this->Html->link('Mais', array('controller' => 'adquiridos', 'action' => 'details', $pedido['id']));
+            ?>
         </td>
     </tr>
     <?php endforeach; ?>

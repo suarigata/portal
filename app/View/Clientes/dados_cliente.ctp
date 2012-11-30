@@ -13,7 +13,7 @@
 <?php	
 		echo $this->Html->link(
 				$this->Form->button('Acompanhar Compras', array('type'=>'submit')),
-				array('controller' => '', 'action' => ''),
+				array('controller' => 'pedidos', 'action' => 'index'),
 				array('escape' => false));	
 		
 		echo $this->Html->link(
