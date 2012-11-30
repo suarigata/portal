@@ -10,13 +10,17 @@ class AtendimentosController extends AppController{
 	}
 	
 	public function seleciona(){
-		$cliente = CakeSession::read('cliente');
-		$chamado = array('Sugestão'=>1, 'Dúvida'=>2, 'Reclamação'=>3, 'Pedido'=>4);
 		$inverso = array(1=>'Sugestão', 2=>'Dúvida', 3=>'Reclamação', 4=>'Pedido');
-		$texto = $this->request->data('texto');
 		$this->set('tipoChamada', $inverso);
-		$tipo = $this->request->data('tipo');	
-		$ticket = $this->Atendimento->createTicket($cliente['cpf'], $texto, $tipo);
+		if (!empty($this->data)) {
+			$cliente = CakeSession::read('cliente');
+			$pedido = $this->data['Ticket'];
+			$texto = $pedido['texto'];
+			$tipo = $pedido['tipo'];
+			$ticket = $this->Atendimento->createTicket($cliente['cpf'], $texto, $tipo);
+			$this->Session->setFlash('Seu ticket foi criado com sucesso');
+			$this->redirect(array('controller' => 'clientes','action' => 'dadosCliente'));
+		}					
 	}
 	
 	public function consulta(){
@@ -40,9 +44,12 @@ class AtendimentosController extends AppController{
 	
 	public function respondeTicket($id){
 		$this->set('id', $id);
-		$texto = $this->request->data('texto');
-		$resposta = $this->Atendimento->respond($id,$texto);
-		$this->set('x', $texto);
+		if (!empty($this->data)) {
+			$texto = $this->data['Resposta']['texto'];
+			$resposta = $this->Atendimento->respond($id,$texto);
+			$this->Session->setFlash('Sua Resposta foi enviada com sucesso.');
+			$this->redirect(array('action' => 'consulta'));
+		}
 	}
 }
 ?>

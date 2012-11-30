@@ -25,7 +25,7 @@ TO REMOVE THE LINK, PLEASE MAKE A 10 DOLLARS DONATION at www.dotemplate.com/#don
 .produto{
 	float: left;
 	width: 180px;
-	height: 270px;
+	height: 275px;
 	text-align: center;
 	font-size: 12px;
 	margin: 5px;
@@ -33,9 +33,22 @@ TO REMOVE THE LINK, PLEASE MAKE A 10 DOLLARS DONATION at www.dotemplate.com/#don
 }
 
 .produtoTitle{
-	margin: 1px 0px 10px;
+	margin-bottom: 10px;
+	margin-top: 0px;
 	height: 50px;
 	color: black !important;
+}
+
+.produtoTitle h2{
+	margin-left: 25px;
+}
+
+h4.produtoTitle{
+	padding-top: 10px;
+}
+
+.produtoTitle a{
+	margin-top: 5px;
 }
 
 .produtoImagem{
@@ -65,6 +78,98 @@ TO REMOVE THE LINK, PLEASE MAKE A 10 DOLLARS DONATION at www.dotemplate.com/#don
 	font-weight: bold;
 }
 
+.carrinho{
+	margin: 10px 5px 0 5px !important;
+}
+
+.infos{
+	float: left;
+	margin: 10px;
+	width: 550px;
+	height: 100px;
+}
+
+.infosCliente{
+	
+}
+
+.botoesCliente button{
+	float: left;
+	margin: 10px;
+	padding: 10px;
+}
+
+.precoTotal{
+	margin: 15px 5px 5px 5px;
+	padding: 0 10px;	
+}
+
+.message{
+	font-size: 20px;
+	margin: 5px 5px 10px 5px !important;
+	padding: 5px !important;
+	width: 742px;
+	text-align: center;
+}
+
+.dados{
+	padding: 15px;
+	margin: 5px;
+	height: 225px;
+}
+
+.seleciona{
+	padding-left: 15px;
+	margin: 5px;
+}
+
+.ticket{
+	padding: 10px;
+	margin: 5px;
+	height: 80px;	
+}
+
+.formaPagamento{
+	float: left;
+	margin: 5px;
+	padding: 15px;
+}
+
+.ticket label, .pagamento label{
+	font-size: 14px;
+	padding: 10px;
+	margin: 10px;	
+}
+
+.pagamento{
+	font-size: 14px;
+	padding: 10px;
+	margin: 5px;
+	height: 130px;	
+}
+
+.ticket .submit, .ticket a{
+	float: left;
+	padding: 10px;
+	margin-left: 10px;	
+}
+
+#frete{
+	padding: 10px;
+	font-size: 15px;
+}
+.messageError{
+	background: #FA8072 !important;
+}
+
+.messageOk{
+	background: #90EE90 !important;
+}
+
+.carrinho h3{
+	color: #000000 !important;
+}
+
 .busca{
 	float: left;
 	margin: 11px 5px 6px;
@@ -88,7 +193,15 @@ TO REMOVE THE LINK, PLEASE MAKE A 10 DOLLARS DONATION at www.dotemplate.com/#don
 }
 
 .logado{
-	
+	font-size: 15px;
+	font-weight: bold;
+	margin: 5px 25px;
+}
+
+.sair{
+	font-size: 15px;
+	font-weight: bold;
+	margin: 5px 50px 0 30px;
 }
 
 .submit{
@@ -102,6 +215,19 @@ TO REMOVE THE LINK, PLEASE MAKE A 10 DOLLARS DONATION at www.dotemplate.com/#don
 	width: 180px;
 	background:#DDDDDD;
 	padding: 1px;
+}
+
+#carrinhoTitle{
+	margin: 5px;
+	padding-left: 10px;
+}
+
+#carrinhoTitle h2 button{
+	float: right;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 5px;
+	margin-top: -5px;
 }
 
 .supercategoria{
@@ -120,6 +246,8 @@ div.lr{
 
 .login{
 	height:30px;
+	font-size: 15px;
+	font-family: Trebuchet MS,Helvetica,Arial,sans-serif;
 }
 
 .texto input{
@@ -132,10 +260,10 @@ div.lr{
 }
 
 .botao input{
-	margin: 7px 7px 7px 7px;
 	background: gray;
 	color:white;
-	border:0px
+	border:0px;
+	margin-right: 20px;
 }
 
 #dentronav{
@@ -147,8 +275,16 @@ div.lr{
 	height:30px;
 }
 
-.quantText{
+.quantDiv{
+	display: inline;
+}
+
+.quantDiv *{
 	width: 30px;
+}
+
+.ui-accordion-header{
+	z-index: 0 !important;
 }
 
 html {

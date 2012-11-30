@@ -38,7 +38,7 @@ ul.BoletoInstrucoes{font-size : 3mm; font-family : verdana, arial}
 <BODY>
 
 <P align=center>
-<TABLE cellSpacing=0 cellPadding=0 border=0 class=Boleto>
+<TABLE style="margin: 10px;" cellSpacing=0 cellPadding=0 border=0 class=Boleto>
   
   <TR>
     <TD style='width: 0.9cm'></TD>
@@ -277,4 +277,20 @@ ul.BoletoInstrucoes{font-size : 3mm; font-family : verdana, arial}
   </TABLE></P>
 
 </BODY>
+<script>
+	$(function() {
+		$("#navHome").removeClass('current');
+        $("#navCarrinho").addClass('current');
+		$("#navDados").removeClass('current');
+        $( "#accordion" ).accordion({
+            collapsible: true
+        });
+    });
+
+    $('#dentronav ul li').click(function() {
+        $(".current").removeClass('current');
+    	$(this).addClass('current');
+    });
+</script>
+
 </HTML>

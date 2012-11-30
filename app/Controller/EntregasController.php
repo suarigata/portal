@@ -6,10 +6,10 @@ class EntregasController extends AppController{
 		//$this->set('trans', $this->Entrega->listaTransportadoras());
 		//$this->set('nova', $this->Entrega->novaEntrega(14526738, 1, ));
 		//$this->set('cancela', $this->Entrega->cancelarEntrega('1'));
-		//$this->set('consulta', $this->Entrega->consultarEntrega(1));
+		$this->set('consultar', $this->Entrega->consultarEntrega(240));
 	}
 	
-	public function calculaFrete(){
+public function calculaFrete(){
 		$tipoEntrega = array('Sedex' => 1, 'e-Sedex' => 2, 'PAC' => 3, 'Fedex' => 4);
 		$aux = array(1=>'Sedex',2=>'e-Sedex', 3=>'PAC',4=> 'Fedex');
 		$cods = CakeSession::read('carrinho');
@@ -24,16 +24,28 @@ class EntregasController extends AppController{
 			$list[$i] = $produtos;
 			$i = $i + 1;
 		}
-		$destino = $this->request->data('destino');
-		$this->set('tipo', $aux);
-		$tipo = $this->request->data('tipoEntrega');
-		//$this->set('x', $aux[$tipo]);
-		//$this->set('car', $list);
 		
-		//Tem q descomenta a linha debaixo
-		if($destino != ''){
+		//$destino = $this->request->data('destino');
+		$this->set('tipo', $aux);
+		//$tipo = $this->request->data('tipoEntrega');
+		
+		if (!empty($this->data)) {
+			if(!empty($this->data['Frete']['cep'])){
+				$destino = $this->data['Frete']['cep'];
+			}
+			/*else{
+				$endereco = $this->data['Frete']['endereco'];
+				$this->loadModel('Endereco');
+				$destino = $this->Endereco->buscaEndereco('', '', '', '', $end,'');
+			}*/
+			$tipo = $this->data['Frete']['tipoEntrega'];
 			$frete = $this->Entrega->calculaCusto($destino, $tipo, $list);
-			$this->set('frete', $frete);
+			CakeSession::write('frete',$frete->frete);
+			CakeSession::write('prazo',$frete->prazo);
+			//$this->redirect(array('controller' => 'validacaoCreditos','action' => 'escolheFormaPagamento'));
+			$valor = CakeSession::read('valorDaCompra');
+			$valor = $valor + $frete->frete;
+			$this->Session->setFlash('FRETE: R$ '.money_format('%.2n', $frete->frete).', com PRAZO de '.$frete->prazo.' dias. O valor total será de R$ '.money_format('%.2n', $valor).'.');
 		}		
 	}
 }

@@ -4,7 +4,7 @@
 		<?php echo $this->Html->charset(); ?>
 		<title>Dez Astre</title>
 		<?php
-			echo $this->Html->meta('icon','dezastre.ico');
+			echo $this->Html->meta('icon',$this->webroot.'/dezastre.ico');
 			echo $this->Html->css('style');
 			echo $this->fetch('meta');
 			echo $this->fetch('css');
@@ -45,7 +45,8 @@
 			</div>
 	  	<?php
 		  	} else
-				echo "<div class=\"lr logado \">$username ". $this->Html->link('Sair', array('controller' => 'autenticacaos', 'action' => 'del'))."</div>";
+				echo "<div class=\"lr sair \">". $this->Html->link('Sair', array('controller' => 'autenticacaos', 'action' => 'del'))."</div>";
+				echo "<div class=\"lr logado \">$username</div>";
 	  	?>
 		
 		</div>
@@ -102,7 +103,7 @@
         
         <div id="content"> 
         	<div>
-          		<?php echo $this->Session->flash(); ?>
+      			<?php echo $this->Session->flash(); ?>
 				<?php echo $this->fetch('content'); ?>
 			</div>  
           	<div class="clear"></div> 
@@ -125,6 +126,24 @@
 
 <script>
 	$("#navHome").addClass('current');
+	$("#flashMessage").addClass('ui-widget-content');
+	$("#flashMessage").addClass('ui-corner-all');
+
+	var message = $("#flashMessage").text();
+	if (message != null){
+		if (message.indexOf('sucesso') >= 0){
+			$("#flashMessage").removeClass('messageError');
+			$("#flashMessage").addClass('messageOk');
+		}else if (message.indexOf('FRETE') >= 0){
+			$("#frete").text($("#flashMessage").text());
+			$("#flashMessage").remove();
+		}else{
+			$("#flashMessage").removeClass('messageOk');
+			$("#flashMessage").addClass('messageError');
+		}
+		$("#flashMessage").delay(4000).fadeOut(5000,'linear');
+	}
+	
 	$(function() {
         $("#menu").menu();
     });
@@ -138,6 +157,7 @@
     	$(".current").removeClass('current');
     	$(this).addClass('current');
     });
+ 
 </script>
 
 </html>

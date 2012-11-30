@@ -1,5 +1,5 @@
 <div id="effect" class="ui-widget-content ui-corner-all produtoDetalhe">
-    <h1 class="produtoTitle ui-widget-header ui-corner-all" style="padding-left: 10px !important;">
+    <h1 class="produtoTitle ui-widget-header ui-corner-all" style="padding-left: 20px; padding-top: 15px;">
 
 <?php
 	if (!array_key_exists('faultcode', $produto)){
@@ -25,7 +25,7 @@
 	        <div class="detalhes">
 <?php
 				echo '<h2>R$ ' . money_format('%.2n', $preco[$prod['codigo']]) . '</h2>';
-				echo '<h3>DESCRIÇÃO:</h3>' . utf8_encode($prod['descricao']) . '<br><br>';
+				echo '<h3>DESCRIÇÃO</h3>' . utf8_encode($prod['descricao']) . '<br><br>';
 				echo '<b>FABRICANTE:</b> ' . utf8_encode($prod['fabricante']) . '<br>';
 				echo '<b>CÓDIGO DO PRODUTO:</b> ' . $prod['codigo'] . '<br>';
 				echo '<b>ALTURA:</b> ' . $prod['altura'] . '<br>';

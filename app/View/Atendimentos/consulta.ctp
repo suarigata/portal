@@ -14,3 +14,16 @@
 	  		array('escape' => false)); 
 	}
 ?>
+
+<script>
+	$(function() {
+		$("#navHome").removeClass('current');
+        $("#navCarrinho").removeClass('current');
+		$("#navDados").addClass('current');
+    });
+    
+    $('#dentronav ul li').click(function() {
+        $(".current").removeClass('current');
+    	$(this).addClass('current');
+    });
+</script>

@@ -1,4 +1,6 @@
-<h1 class="produtoTitle ui-widget-header ui-corner-all"><?php echo $nome; ?></h1>
+<div class="produtoTitle ui-widget-header ui-corner-all" style="margin: 5px;">
+	<h2><?php echo $nome; ?></h2>
+</div>
 <?php 
 	if (!array_key_exists('faultcode', $produtos)){
 		$produtos = $produtos['return'];
