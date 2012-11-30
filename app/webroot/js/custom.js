@@ -23,17 +23,11 @@ $(document).ready( function() {
 	
 });
 
- 
-
- 
-
-
-
 
 
 
 $(document).ready( function() {
-
+	
 	
 		Cufon.replace('#content h1', { fontFamily: 'ColaborateLight', fontSize: '40px', color:'#000000' } );
 		Cufon.replace('#content h2', { fontFamily: 'ColaborateLight', fontSize: '22px', color:'#000000' } );

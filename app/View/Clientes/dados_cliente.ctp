@@ -7,9 +7,6 @@
 			echo '<b>NASCIMENTO:</b> ' . $cliente['data_nascimento'] . '<br><br>';
 			echo '<b>PAI:</b> ' . $cliente['nome_pai'] . '<br><br>';
 			echo '<b>MAE:</b> ' . $cliente['nome_mae'] . '<br><br>';
-		}
-		else
-				echo '<b>Não há cliente logado</b>';
 ?>
 	</div>
 	<div class="botoesCliente">

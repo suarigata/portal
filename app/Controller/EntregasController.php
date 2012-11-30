@@ -45,7 +45,11 @@ public function calculaFrete(){
 			//$this->redirect(array('controller' => 'validacaoCreditos','action' => 'escolheFormaPagamento'));
 			$valor = CakeSession::read('valorDaCompra');
 			$valor = $valor + $frete->frete;
+<<<<<<< HEAD
 			$this->Session->setFlash('FRETE: R$ '.money_format('%.2n', $frete->frete).', com PRAZO de '.$frete->prazo.' dias. O valor total será de R$ '.money_format('%.2n', $valor).'.');
+=======
+			$this->Session->setFlash('Frete '.$frete->frete.'Prazo '.$frete->prazo.' O valor total será '.$valor);
+>>>>>>> 3d6ecd0e62124e671688e9c0ac79eade67729c0b
 		}		
 	}
 }
