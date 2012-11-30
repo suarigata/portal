@@ -20,7 +20,7 @@
             <?php echo $pedido['cpf']; ?>
         </td>
         <td>
-            <?php echo $pedido['valor']; ?>
+            <?php echo 'R$ ' . money_format('%.2n', $pedido['valor']); ?>
         </td>
         <td>
             <?php echo $pedido['compra']; ?>
