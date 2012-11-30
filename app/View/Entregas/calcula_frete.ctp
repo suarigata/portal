@@ -1,16 +1,14 @@
 <h1>FRETE</h1>
 
 <?php
-
-	echo $this->Form->create(false, array(
-    'url' => array('controller' => 'entregas', 'action' => 'calculaFrete')
-	));
-	
-	echo $this->Form->input('remetente', array('label' => 'CEP remetente'));	
-	echo $this->Form->input('destino', array('label' => 'CEP destino'));
+	echo $this->Form->create('Frete');	
+	echo $this->Form->input('cep', array('label' => 'CEP '));
+	//echo $this->Form->input('endereco', array('label' => 'Endereço '));
 	echo $this->Form->input('tipoEntrega', array('label' => 'Forma de Entrega', 'options' => $tipo));
-	echo $this->Form->end('OK'); 
-echo $x;
-print_r($frete);
-print_r($car);	
+	echo $this->Form->end('OK');
+	
+	echo $this->Html->link(
+		$this->Form->button('Voltar', array('type'=>'submit', 'style' => 'float: right; margin-left: 600px;')),
+	  	array('controller' => 'carrinho', 'action' => 'listCarrinho'),
+	  	array('escape' => false));
 ?>

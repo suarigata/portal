@@ -7,7 +7,8 @@ class ValidacaoCreditosController extends AppController{
 	
 	public function escolheFormaPagamento () {
 		$cliente=CakeSession::read('cliente');
-		if ($cliente != "") {	
+		$frete=CakeSession::read('frete');
+		if ($cliente != "" && $frete != "") {	
 			$scores = array('A' => 30000, 'B' => 15000, 'C' => 10000, 'D' => 5000, 'X' => 0);
 		
 			$valorDaCompra=CakeSession::read('valorDaCompra');
@@ -28,8 +29,14 @@ class ValidacaoCreditosController extends AppController{
 			$this->set('total', $valorDaCompra);
 		}
 		else {
-			$this->Session->setFlash('Você não está logado, por favor realize login para continuar');
-			$this->redirect(array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
+			if($cliente == ""){
+				$this->Session->setFlash('Você não está logado, por favor realize login para continuar');
+				$this->redirect(array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
+			}
+			else{
+				$this->Session->setFlash('Calcule o frete primeiro');
+				$this->redirect(array('controller' => 'Entregas', 'action' => 'calculaFrete'));
+			}
 		}
 	}
 }

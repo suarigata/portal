@@ -1,13 +1,7 @@
-<!-- File: /app/View/Cartaos/pagamento.ctp -->
 <h1>Cartao</h1>
 
-<?php
-	//print_r($par);
-	//print_r ($validate);
-	
-	echo $this->Form->create(false, array(
-    'url' => array('controller' => 'cartaos', 'action' => 'efetua')
-	));
+<?php	
+	echo $this->Form->create('Pagamento');
 	
 	echo $this->Form->input('numero', array('label' => 'NUMERo'));	
 	echo $this->Form->input('parcela', array('label' => 'Parcelas', 'options' => $parcelas));

@@ -9,7 +9,7 @@ class EntregasController extends AppController{
 		$this->set('consultar', $this->Entrega->consultarEntrega(240));
 	}
 	
-	public function calculaFrete(){
+public function calculaFrete(){
 		$tipoEntrega = array('Sedex' => 1, 'e-Sedex' => 2, 'PAC' => 3, 'Fedex' => 4);
 		$aux = array(1=>'Sedex',2=>'e-Sedex', 3=>'PAC',4=> 'Fedex');
 		$cods = CakeSession::read('carrinho');
@@ -24,16 +24,28 @@ class EntregasController extends AppController{
 			$list[$i] = $produtos;
 			$i = $i + 1;
 		}
-		$destino = $this->request->data('destino');
-		$this->set('tipo', $aux);
-		$tipo = $this->request->data('tipoEntrega');
-		//$this->set('x', $aux[$tipo]);
-		//$this->set('car', $list);
 		
-		//Tem q descomenta a linha debaixo
-		if($destino != ''){
+		//$destino = $this->request->data('destino');
+		$this->set('tipo', $aux);
+		//$tipo = $this->request->data('tipoEntrega');
+		
+		if (!empty($this->data)) {
+			if(!empty($this->data['Frete']['cep'])){
+				$destino = $this->data['Frete']['cep'];
+			}
+			/*else{
+				$endereco = $this->data['Frete']['endereco'];
+				$this->loadModel('Endereco');
+				$destino = $this->Endereco->buscaEndereco('', '', '', '', $end,'');
+			}*/
+			$tipo = $this->data['Frete']['tipoEntrega'];
 			$frete = $this->Entrega->calculaCusto($destino, $tipo, $list);
-			$this->set('frete', $frete);
+			CakeSession::write('frete',$frete->frete);
+			CakeSession::write('prazo',$frete->prazo);
+			//$this->redirect(array('controller' => 'validacaoCreditos','action' => 'escolheFormaPagamento'));
+			$valor = CakeSession::read('valorDaCompra');
+			$valor = $valor + $frete->frete;
+			$this->Session->setFlash('Frete '.$frete->frete.'Prazo '.$frete->prazo.' O valor total será '.$valor);
 		}		
 	}
 }
