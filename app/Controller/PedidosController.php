@@ -3,7 +3,8 @@ class PedidosController extends AppController {
 	public $helpers = array('Html', 'Form');
 	
 	public function index() {
-		$orders = $this->Pedido->findAllByCpf(CakeSession::read('cliente')['cpf']);
+		$cliente=CakeSession::read('cliente');
+		$orders = $this->Pedido->findAllByCpf($cliente['cpf']);
 		
 		$this->loadModel('Banco');
 		$this->loadModel('Cartao');
