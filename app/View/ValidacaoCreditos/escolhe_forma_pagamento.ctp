@@ -8,7 +8,8 @@
 		if($tipo != 'Boleto')
 			echo '<div>' . $this->Html->link($tipo, array('controller' => 'cartaos', 'action' => 'pagamento', $chave)) .'</div><br>';
 		else
-				echo $this->Html->link($tipo,'javascript:boleto()').'<br>';
+			echo '<div>' . $this->Html->link($tipo, array('controller' => 'entregas', 'action' => 'finalizaCompra')) .'</div><br>';
+				//echo $this->Html->link($tipo,'javascript:boleto()').'<br>';
 	}
 ?>
 </div>

@@ -9,7 +9,7 @@ class EntregasController extends AppController{
 		$this->set('consultar', $this->Entrega->consultarEntrega(240));
 	}
 	
-public function calculaFrete(){
+	public function calculaFrete(){
 		$tipoEntrega = array('Sedex' => 1, 'e-Sedex' => 2, 'PAC' => 3, 'Fedex' => 4);
 		$aux = array(1=>'Sedex',2=>'e-Sedex', 3=>'PAC',4=> 'Fedex');
 		$cods = CakeSession::read('carrinho');
@@ -32,6 +32,7 @@ public function calculaFrete(){
 		if (!empty($this->data)) {
 			if(!empty($this->data['Frete']['cep'])){
 				$destino = $this->data['Frete']['cep'];
+				CakeSession::write('cep',$destino);
 			}
 			/*else{
 				$endereco = $this->data['Frete']['endereco'];
@@ -39,6 +40,7 @@ public function calculaFrete(){
 				$destino = $this->Endereco->buscaEndereco('', '', '', '', $end,'');
 			}*/
 			$tipo = $this->data['Frete']['tipoEntrega'];
+			CakeSession::write('tipoEntrega',$tipo);
 			$frete = $this->Entrega->calculaCusto($destino, $tipo, $list);
 			CakeSession::write('frete',$frete->frete);
 			CakeSession::write('prazo',$frete->prazo);
@@ -47,6 +49,27 @@ public function calculaFrete(){
 			$valor = $valor + $frete->frete;
 			$this->Session->setFlash('FRETE: R$ '.money_format('%.2n', $frete->frete).', com PRAZO de '.$frete->prazo.' dias. O valor total será de R$ '.money_format('%.2n', $valor).'.');
 		}		
+	}
+	
+	public function finalizaCompra(){
+		$carrinho = CakeSession::read('carrinho');
+		$destino = CakeSession::read('cep');
+		$tipoEntrega = CakeSession::read('tipoEntrega');
+		
+		$list = array();
+		$i = 0;
+		foreach ($carrinho as $prod => $qtd){
+			$produtos = null;
+			$produtos->id_produto = $prod;
+			$produtos->quantidade = $qtd;
+			$produtos->peso = 1.0;//tem q ver isso
+			$produtos->volume = 1.0;//tem q ver isso
+			$list[$i] = $produtos;
+			$i = $i + 1;
+		}
+		$entrega = $this->Entrega->novaEntrega($destino, $tipoEntrega, $list);
+		//$teste = $this->Entrega->consultarEntrega($entrega);
+		$this->set('tipo', $entrega);
 	}
 }
 ?>

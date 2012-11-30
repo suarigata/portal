@@ -29,7 +29,7 @@ class Cartao extends AppModel{
 	public function consultaTransacao($id){
 		$client = new SoapClient("http://www.chainreactor.net/services/nusoap/WebServer.php?wsdl");
 		$result = $client->getTransactionById("10", $id);
-		return $result;
+		return json_decode($result, true);
 	}
 	
 	public function consultarTodasTransacoes($cpf, $status, $brand, $dateFrom, $dateTo){

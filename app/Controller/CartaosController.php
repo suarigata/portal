@@ -6,7 +6,7 @@ class CartaosController extends AppController{
 		//$this->set('parcelas', $this->Cartao->numParcelas('2000', 'AMEX'));
 		//$this->set('realiza', $this->Cartao->realizaTransacao('1', 'AMEX', "5286028516049066", "Augusto Matraga", "12628161818", "890", "062014", "3"));
 		//$this->set('cancel', $this->Cartao->cancelaTransacao(131));
-		$this->set('consulta', $this->Cartao->consultaTransacao('338'));
+		$this->set('consulta', $this->Cartao->consultaTransacao('362'));
 		//$this->set('consultall', $this->Cartao->consultarTodasTransacoes('', '','', '',''));
 		//$this->set('bandeiras', $this->Cartao->consultarBandeiras());
 		//$this->set('status', $this->Cartao->consultarStatus());
@@ -34,8 +34,9 @@ public function pagamento($tipo){
 			$transacao = $this->Cartao->realizaTransacao($valorDaCompra, $brand, $numero, $cliente['nome'], $cliente['cpf'] , $codigo, $validade, $par);
 			if($transacao != 0){
 				CakeSession::write('parcela',$par);
+				CakeSession::write('transacao',$transacao);
 				$this->Session->setFlash('O pagamento foi realizado com sucesso');
-				$this->redirect(array('controller' =>'cartaos','action' => 'efetua'));
+				$this->redirect(array('controller' =>'entregas','action' => 'finalizaCompra'));
 				//guarda o pedido
 			}else $this->Session->setFlash('Falha no pagamento');
 		}

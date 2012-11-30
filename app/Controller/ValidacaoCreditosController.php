@@ -19,11 +19,13 @@ class ValidacaoCreditosController extends AppController{
 				$this->loadModel('Cartao');
 					
 				$cartoes = $this->Cartao->consultarBandeiras();
-					
-				if ($scores[$valido['return']['score']] >= $valorDaCompra)
+				CakeSession::write('bandeira','boleto');
+				if ($scores[$valido['return']['score']] >= $valorDaCompra){
 					$cartoes['BOLETO'] = 'Boleto';
-				else
+				}
+				else{
 					$cartoes = array('Boleto');
+				}
 			}
 			$this->set('pagamentos', $cartoes);
 			$this->set('total', $valorDaCompra);
