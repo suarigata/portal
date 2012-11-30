@@ -56,7 +56,7 @@ class CarrinhoController extends AppController{
 			if($cods[$codigo]<1){
 				$cods[$codigo]=0;
 				// XXX talvez arranque do carrinho se zerar
-				// $this->redirect(array('controller' => 'Carrinho', 'action' => 'removerItem',$codigo,$redirect)); //TODO talvez redirect
+				$this->redirect(array('controller' => 'Carrinho', 'action' => 'removerItem',$codigo,$redirect)); //TODO talvez redirect
 				// TODO quando for abrir o carrinho poderia arrancar itens zerados se não redirecionar acima
 			}
 		}
@@ -73,10 +73,10 @@ class CarrinhoController extends AppController{
 		if($redirect == 0)
 			$this->redirect(array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
 		else
-			$this->redirect(array('controller' => 'Carrinho', 'action' => 'itemQtd',$cods[$codigo]));
+			$this->redirect(array('controller' => 'Carrinho', 'action' => 'itemQtd',isset($cods[$codigo])?$cods[$codigo]:0,$redirect));//isset($cods[$codigo])?$cods[$codigo]:0),1);
 	}
 
-	public function removerItem($codigo,$redirect = 1){
+	public function removerItem($codigo,$redirect = 0){
 		$ret = $this->pegaDaSessao();
 		$cods = $ret['cods'];
 		$qtds = $ret['qtds'];
@@ -91,7 +91,7 @@ class CarrinhoController extends AppController{
 		unset($produtos[$codigo]);
 		
 		$this->colocaNaSessao($cods, $produtos, $precos, $qtds);
-		if($redirect == 1)
+		if($redirect == 0)
 			$this->redirect(array('controller' => 'Carrinho', 'action' => 'listCarrinho'));
 		else
 			$this->redirect(array('controller' => 'Carrinho', 'action' => 'itemQtd',0));
