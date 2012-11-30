@@ -17,6 +17,10 @@ class PedidosController extends AppController {
 		$valor = 0;
 		$data = 'data';
 		
+		$this->set('tipo_pgt', $order['Pedido']['pagamento']);
+		$this->set('id_pgt', $order['Pedido']['id_pgmt']);
+		$this->set('id_entrega', $order['Pedido']['id_entrega']);
+		
 		foreach ($orders as $order) {
 			if ($order['Pedido']['pagamento'] == 0) {
 				$pgt = $this->Banco->recuperarBoleto(180);//$order['Pedido']['id_pgmt']);
