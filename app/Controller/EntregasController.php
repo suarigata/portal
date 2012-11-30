@@ -6,7 +6,7 @@ class EntregasController extends AppController{
 		//$this->set('trans', $this->Entrega->listaTransportadoras());
 		//$this->set('nova', $this->Entrega->novaEntrega(14526738, 1, ));
 		//$this->set('cancela', $this->Entrega->cancelarEntrega('1'));
-		//$this->set('consulta', $this->Entrega->consultarEntrega(1));
+		$this->set('consultar', $this->Entrega->consultarEntrega(240));
 	}
 	
 	public function calculaFrete(){
